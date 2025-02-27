@@ -1,17 +1,12 @@
-
 import { ArrowRight, BarChart2, Shield, Zap } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
-
   useEffect(() => {
     setIsVisible(true);
   }, []);
-
-  return (
-    <section className="relative pt-28 pb-20 overflow-hidden bg-gradient-to-b from-white via-brand-cream to-white">
+  return <section className="relative pt-28 pb-20 overflow-hidden bg-gradient-to-b from-white via-brand-cream to-white">
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
         <div className="absolute top-20 right-10 w-64 h-64 bg-brand-gold/10 rounded-full blur-3xl"></div>
@@ -66,11 +61,7 @@ const Hero = () => {
           <div className={`relative ${isVisible ? 'animate-fade-in-left' : 'opacity-0'} animation-delay-300`}>
             <div className="relative rounded-2xl overflow-hidden shadow-gold-lg border border-brand-gold/20">
               <div className="aspect-w-16 aspect-h-9 bg-brand-navy/5 rounded-2xl overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
-                  alt="Financial intelligence dashboard" 
-                  className="object-cover w-full h-full"
-                />
+                <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Financial intelligence dashboard" className="object-cover w-full h-full" />
               </div>
               
               {/* Stats overlay */}
@@ -86,7 +77,7 @@ const Hero = () => {
                   </div>
                   <div className="text-center">
                     <p className="text-xs text-gray-500">Processing Time</p>
-                    <p className="text-lg font-semibold text-brand-navy">&lt;5s</p>
+                    <p className="text-lg font-semibold text-brand-navy">&lt;60s</p>
                   </div>
                 </div>
               </div>
@@ -109,8 +100,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
