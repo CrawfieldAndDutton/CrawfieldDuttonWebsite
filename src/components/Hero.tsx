@@ -69,7 +69,7 @@ const Hero = () => {
                 <div className="grid grid-cols-3 gap-4">
                   <div className="text-center">
                     <p className="text-xs text-gray-500">Banks & NBFCs</p>
-                    <p className="text-lg font-semibold text-brand-navy">150+</p>
+                    <p className="text-lg font-semibold text-brand-navy">5+</p>
                   </div>
                   <div className="text-center border-x border-gray-200">
                     <p className="text-xs text-gray-500">Accuracy</p>
