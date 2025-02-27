@@ -32,6 +32,7 @@ const Pricing = () => {
       {
         name: 'Free',
         price: '0',
+        priceSubtext: '',
         description: 'Basic analysis for individuals',
         features: [
           '1 bank statement analysis throughout',
@@ -44,7 +45,8 @@ const Pricing = () => {
       },
       {
         name: 'Standard',
-        price: '5',
+        price: '399',
+        priceSubtext: '/month',
         description: 'Comprehensive monthly analysis',
         features: [
           '1 bank statement analysis per month',
@@ -60,7 +62,8 @@ const Pricing = () => {
       },
       {
         name: 'Premium',
-        price: '30',
+        price: '2,499',
+        priceSubtext: '/month',
         description: 'Advanced weekly analysis',
         features: [
           '1 bank statement analysis per week',
@@ -79,6 +82,7 @@ const Pricing = () => {
       {
         name: 'Free',
         price: '0',
+        priceSubtext: '',
         description: 'Basic analysis for individuals',
         features: [
           '1 bank statement analysis throughout',
@@ -91,7 +95,7 @@ const Pricing = () => {
       },
       {
         name: 'Standard',
-        price: '50',
+        price: '4,199',
         priceSubtext: '/year',
         description: 'Comprehensive monthly analysis',
         features: [
@@ -109,7 +113,7 @@ const Pricing = () => {
       },
       {
         name: 'Premium',
-        price: '250',
+        price: '20,999',
         priceSubtext: '/year',
         description: 'Advanced weekly analysis',
         features: [
@@ -132,6 +136,7 @@ const Pricing = () => {
     {
       name: 'Free Trial',
       price: '0',
+      priceSubtext: '',
       description: 'Try our platform with limited features',
       features: [
         '1 bank statement analysis throughout',
@@ -144,7 +149,7 @@ const Pricing = () => {
     },
     {
       name: 'Essential',
-      price: '1',
+      price: '79',
       priceSubtext: 'per statement',
       description: 'Comprehensive analysis for lenders',
       features: [
@@ -161,7 +166,7 @@ const Pricing = () => {
     },
     {
       name: 'Enterprise',
-      price: '2',
+      price: '169',
       priceSubtext: 'per statement',
       description: 'Advanced analysis with all features',
       features: [
@@ -185,6 +190,7 @@ const Pricing = () => {
     {
       name: 'Free Trial',
       price: '0',
+      priceSubtext: '',
       description: 'Try our monitoring features',
       features: [
         '1 bank statement analysis throughout',
@@ -197,7 +203,7 @@ const Pricing = () => {
     },
     {
       name: 'Essential',
-      price: '0.5',
+      price: '39',
       priceSubtext: 'per statement pull',
       description: 'Ongoing monitoring essentials',
       features: [
@@ -214,7 +220,7 @@ const Pricing = () => {
     },
     {
       name: 'Enterprise',
-      price: '1',
+      price: '79',
       priceSubtext: 'per statement pull',
       description: 'Complete monitoring solution',
       features: [
@@ -339,7 +345,7 @@ const Pricing = () => {
               
               <div className="mb-4">
                 <span className="text-4xl font-display font-bold">
-                  {pricingPlan.price === '0' ? 'Free' : `$${pricingPlan.price}`}
+                  {pricingPlan.price === '0' ? 'Free' : `₹${pricingPlan.price}`}
                 </span>
                 {pricingPlan.priceSubtext && (
                   <span className="text-gray-500 text-sm ml-1">{pricingPlan.priceSubtext}</span>

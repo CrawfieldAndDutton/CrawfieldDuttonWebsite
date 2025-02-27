@@ -1,6 +1,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { Send, Phone, Mail, MapPin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Contact = () => {
   const contactRef = useRef<HTMLDivElement>(null);
@@ -156,7 +157,6 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-medium text-lg">Email</h4>
-                    <p className="text-gray-300">info@crawfieldanddutton.com</p>
                     <p className="text-gray-300">support@crawfieldanddutton.com</p>
                   </div>
                 </div>
@@ -167,8 +167,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-medium text-lg">Phone</h4>
-                    <p className="text-gray-300">+91 11 4567 8900</p>
-                    <p className="text-gray-300">+91 98765 43210</p>
+                    <p className="text-gray-300">+91 8617703187</p>
                   </div>
                 </div>
                 
@@ -180,9 +179,9 @@ const Contact = () => {
                     <h4 className="font-medium text-lg">Address</h4>
                     <p className="text-gray-300">
                       Crawfield & Dutton Enterprise Solutions Pvt. Ltd.<br />
-                      42nd Floor, Financial District<br />
-                      Hitech City, Hyderabad 500032<br />
-                      Telangana, India
+                      Suren Sarkar Road, Phoolbagan<br />
+                      Kolkata - 700010<br />
+                      West Bengal, India
                     </p>
                   </div>
                 </div>
@@ -195,6 +194,15 @@ const Contact = () => {
                   <p>Saturday: 10:00 AM - 2:00 PM IST</p>
                   <p>Sunday: Closed</p>
                 </div>
+              </div>
+              
+              <div className="mt-8">
+                <Link
+                  to="/contact"
+                  className="inline-block px-6 py-3 bg-brand-gold text-white rounded-lg font-medium hover:bg-brand-darkGold transition-all duration-300 shadow-gold"
+                >
+                  Visit Contact Page
+                </Link>
               </div>
             </div>
           </div>

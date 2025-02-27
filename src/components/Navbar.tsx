@@ -43,11 +43,22 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <NavLink href="#solutions">Solutions</NavLink>
-            <NavLink href="#target-markets">Markets</NavLink>
-            <NavLink href="#pricing">Pricing</NavLink>
-            <NavLink href="#about">About</NavLink>
-            <NavLink href="#contact">Contact</NavLink>
+            <NavLink href="/#solutions">Solutions</NavLink>
+            <NavLink href="/#target-markets">Markets</NavLink>
+            <NavLink href="/#pricing">Pricing</NavLink>
+            <Link 
+              to="/methodology" 
+              className="text-brand-navy hover:text-brand-gold font-medium transition-colors duration-300"
+            >
+              Methodology
+            </Link>
+            <NavLink href="/#about">About</NavLink>
+            <Link 
+              to="/contact" 
+              className="text-brand-navy hover:text-brand-gold font-medium transition-colors duration-300"
+            >
+              Contact
+            </Link>
             
             <Link 
               to="/login" 
@@ -78,11 +89,24 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg animate-fade-in-down">
           <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-            <MobileNavLink href="#solutions" onClick={() => setIsOpen(false)}>Solutions</MobileNavLink>
-            <MobileNavLink href="#target-markets" onClick={() => setIsOpen(false)}>Markets</MobileNavLink>
-            <MobileNavLink href="#pricing" onClick={() => setIsOpen(false)}>Pricing</MobileNavLink>
-            <MobileNavLink href="#about" onClick={() => setIsOpen(false)}>About</MobileNavLink>
-            <MobileNavLink href="#contact" onClick={() => setIsOpen(false)}>Contact</MobileNavLink>
+            <MobileNavLink href="/#solutions" onClick={() => setIsOpen(false)}>Solutions</MobileNavLink>
+            <MobileNavLink href="/#target-markets" onClick={() => setIsOpen(false)}>Markets</MobileNavLink>
+            <MobileNavLink href="/#pricing" onClick={() => setIsOpen(false)}>Pricing</MobileNavLink>
+            <Link
+              to="/methodology"
+              className="text-brand-navy hover:text-brand-gold font-medium py-2 border-b border-gray-100 transition-colors duration-300"
+              onClick={() => setIsOpen(false)}
+            >
+              Methodology
+            </Link>
+            <MobileNavLink href="/#about" onClick={() => setIsOpen(false)}>About</MobileNavLink>
+            <Link
+              to="/contact"
+              className="text-brand-navy hover:text-brand-gold font-medium py-2 border-b border-gray-100 transition-colors duration-300"
+              onClick={() => setIsOpen(false)}
+            >
+              Contact
+            </Link>
             
             <div className="flex space-x-3 pt-3">
               <Link 
