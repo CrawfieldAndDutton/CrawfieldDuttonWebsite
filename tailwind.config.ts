@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,20 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Custom brand colors
+				brand: {
+					gold: '#F5A623',
+					darkGold: '#D48806',
+					lightGold: '#FFD39A',
+					navy: '#1F2A44',
+					lightNavy: '#364464',
+					cream: '#FFF8E7',
+					gradient: {
+						start: '#F5A623',
+						middle: '#D48806',
+						end: '#8A4D0F'
+					}
 				}
 			},
 			borderRadius: {
@@ -84,11 +99,49 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' }
+				},
+				'fade-in-up': {
+					'0%': { opacity: '0', transform: 'translateY(20px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' }
+				},
+				'fade-in-down': {
+					'0%': { opacity: '0', transform: 'translateY(-20px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' }
+				},
+				'fade-in-left': {
+					'0%': { opacity: '0', transform: 'translateX(20px)' },
+					'100%': { opacity: '1', transform: 'translateX(0)' }
+				},
+				'pulse-soft': {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.8' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.6s ease-out',
+				'fade-in-up': 'fade-in-up 0.6s ease-out',
+				'fade-in-down': 'fade-in-down 0.6s ease-out',
+				'fade-in-left': 'fade-in-left 0.6s ease-out',
+				'pulse-soft': 'pulse-soft 2s ease-in-out infinite'
+			},
+			fontFamily: {
+				'display': ['Playfair Display', 'serif'],
+				'sans': ['Poppins', 'system-ui', 'sans-serif']
+			},
+			backgroundImage: {
+				'gradient-gold': 'linear-gradient(135deg, #F5A623 0%, #D48806 40%, #8A4D0F 100%)',
+				'gradient-navy': 'linear-gradient(135deg, #1F2A44 0%, #364464 100%)',
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))'
+			},
+			boxShadow: {
+				'gold': '0 4px 14px 0 rgba(245, 166, 35, 0.25)',
+				'gold-lg': '0 10px 20px 0 rgba(245, 166, 35, 0.3)'
 			}
 		}
 	},
