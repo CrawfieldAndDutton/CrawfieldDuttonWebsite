@@ -68,7 +68,7 @@ const Hero = () => {
               <div className="absolute bottom-4 left-4 right-4 glassmorphism rounded-xl p-4">
                 <div className="grid grid-cols-3 gap-4">
                   <div className="text-center">
-                    <p className="text-xs text-gray-500">Banks & NBFCs</p>
+                    <p className="text-xs text-gray-500">Subscribed Clients</p>
                     <p className="text-lg font-semibold text-brand-navy">5+</p>
                   </div>
                   <div className="text-center border-x border-gray-200">
