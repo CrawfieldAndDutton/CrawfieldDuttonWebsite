@@ -41,7 +41,14 @@ const Footer = () => {
             <ul className="space-y-3">
               <FooterLink href="/#solutions">Solutions</FooterLink>
               <FooterLink href="/#target-markets">Target Markets</FooterLink>
-              <FooterLink href="/#pricing">Pricing</FooterLink>
+              <li>
+                <Link 
+                  to="/pricing" 
+                  className="text-gray-300 hover:text-brand-gold transition-colors"
+                >
+                  Pricing
+                </Link>
+              </li>
               <li>
                 <Link 
                   to="/methodology" 
@@ -66,11 +73,19 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-display font-bold mb-6">Support</h3>
             <ul className="space-y-3">
-              <FooterLink href="/help">Help Center</FooterLink>
-              <FooterLink href="/faq">FAQ</FooterLink>
-              <FooterLink href="/privacy">Privacy Policy</FooterLink>
-              <FooterLink href="/terms">Terms of Service</FooterLink>
-              <FooterLink href="/api-docs">API Documentation</FooterLink>
+              <FooterLink href="#help">Help Center</FooterLink>
+              <FooterLink href="#faq">FAQ</FooterLink>
+              <li>
+                <Link to="/privacy-policy" className="text-gray-300 hover:text-brand-gold transition-colors">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link to="/terms-of-service" className="text-gray-300 hover:text-brand-gold transition-colors">
+                  Terms of Service
+                </Link>
+              </li>
+              <FooterLink href="#api-docs">API Documentation</FooterLink>
             </ul>
           </div>
           
@@ -111,14 +126,20 @@ const Footer = () => {
           </div>
           
           <div className="flex space-x-6">
-            <Link to="/privacy" className="text-gray-400 text-sm hover:text-brand-gold transition-colors">
+            <Link to="/privacy-policy" className="text-gray-400 text-sm hover:text-brand-gold transition-colors">
               Privacy
             </Link>
-            <Link to="/terms" className="text-gray-400 text-sm hover:text-brand-gold transition-colors">
+            <Link to="/terms-of-service" className="text-gray-400 text-sm hover:text-brand-gold transition-colors">
               Terms
             </Link>
-            <Link to="/cookies" className="text-gray-400 text-sm hover:text-brand-gold transition-colors">
+            <Link to="/cookie-policy" className="text-gray-400 text-sm hover:text-brand-gold transition-colors">
               Cookies
+            </Link>
+            <Link to="/gdpr" className="text-gray-400 text-sm hover:text-brand-gold transition-colors">
+              GDPR
+            </Link>
+            <Link to="/careers" className="text-gray-400 text-sm hover:text-brand-gold transition-colors">
+              Careers
             </Link>
           </div>
         </div>

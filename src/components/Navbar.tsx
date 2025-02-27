@@ -45,7 +45,12 @@ const Navbar = () => {
           <div className="hidden md:flex items-center space-x-8">
             <NavLink href="/#solutions">Solutions</NavLink>
             <NavLink href="/#target-markets">Markets</NavLink>
-            <NavLink href="/#pricing">Pricing</NavLink>
+            <Link 
+              to="/pricing" 
+              className="text-brand-navy hover:text-brand-gold font-medium transition-colors duration-300"
+            >
+              Pricing
+            </Link>
             <Link 
               to="/methodology" 
               className="text-brand-navy hover:text-brand-gold font-medium transition-colors duration-300"
@@ -91,7 +96,13 @@ const Navbar = () => {
           <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
             <MobileNavLink href="/#solutions" onClick={() => setIsOpen(false)}>Solutions</MobileNavLink>
             <MobileNavLink href="/#target-markets" onClick={() => setIsOpen(false)}>Markets</MobileNavLink>
-            <MobileNavLink href="/#pricing" onClick={() => setIsOpen(false)}>Pricing</MobileNavLink>
+            <Link
+              to="/pricing"
+              className="text-brand-navy hover:text-brand-gold font-medium py-2 border-b border-gray-100 transition-colors duration-300"
+              onClick={() => setIsOpen(false)}
+            >
+              Pricing
+            </Link>
             <Link
               to="/methodology"
               className="text-brand-navy hover:text-brand-gold font-medium py-2 border-b border-gray-100 transition-colors duration-300"
