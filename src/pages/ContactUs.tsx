@@ -83,7 +83,7 @@ const ContactUs = () => {
       title: 'Email Us',
       details: [
         'support@crawfieldanddutton.com',
-        'We'll respond within 24 hours'
+        "We'll respond within 24 hours"  // Changed to double quotes to handle apostrophe
       ],
       action: {
         link: 'mailto:support@crawfieldanddutton.com',
