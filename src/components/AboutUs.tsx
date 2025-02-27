@@ -104,7 +104,7 @@ const AboutUs = () => {
             
             <div className="absolute -bottom-6 -left-6 bg-white rounded-lg shadow-lg p-4 max-w-[180px]">
               <p className="text-xs text-gray-500 uppercase">Team</p>
-              <p className="text-xl font-display font-bold text-brand-navy">50+ Experts</p>
+              <p className="text-xl font-display font-bold text-brand-navy">10+ Experts</p>
               <p className="text-xs text-gray-500 mt-1">
                 Data scientists, engineers, and financial analysts
               </p>
