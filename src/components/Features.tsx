@@ -54,13 +54,6 @@ const Features = () => {
             text="For Banks & NBFCs"
           />
           <TabButton 
-            id="employers" 
-            active={activeTab === 'employers'} 
-            onClick={() => setActiveTab('employers')}
-            icon={<Briefcase size={18} />}
-            text="For Employers"
-          />
-          <TabButton 
             id="insurance" 
             active={activeTab === 'insurance'} 
             onClick={() => setActiveTab('insurance')}
@@ -99,19 +92,6 @@ const Features = () => {
               />
             )}
             
-            {activeTab === 'employers' && (
-              <TabContent
-                title="Financial Background Verification"
-                description="Streamline your hiring process with thorough financial background checks that provide insights into candidates' financial responsibility."
-                features={[
-                  { icon: <User size={20} />, text: "Candidate financial profile" },
-                  { icon: <Shield size={20} />, text: "Risk assessment" },
-                  { icon: <Database size={20} />, text: "Historical analysis" },
-                  { icon: <Lock size={20} />, text: "Compliant verification process" }
-                ]}
-              />
-            )}
-            
             {activeTab === 'insurance' && (
               <TabContent
                 title="Risk Profiling & Premium Optimization"
@@ -140,14 +120,6 @@ const Features = () => {
               <img 
                 src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
                 alt="Credit Scoring Dashboard"
-                className="w-full h-auto rounded-2xl object-cover"
-              />
-            )}
-            
-            {activeTab === 'employers' && (
-              <img 
-                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
-                alt="Employer Verification Dashboard"
                 className="w-full h-auto rounded-2xl object-cover"
               />
             )}

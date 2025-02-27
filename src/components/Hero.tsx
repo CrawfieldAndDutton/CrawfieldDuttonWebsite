@@ -108,25 +108,6 @@ const Hero = () => {
             </div>
           </div>
         </div>
-
-        {/* Trusted By */}
-        <div className="mt-20">
-          <p className="text-center text-gray-500 mb-6">Trusted by leading financial institutions</p>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-70">
-            <div className="h-8">
-              <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80" alt="Bank 1" className="h-full" />
-            </div>
-            <div className="h-8">
-              <img src="https://images.unsplash.com/photo-1431576901776-e539bd916ba2?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80" alt="Bank 2" className="h-full" />
-            </div>
-            <div className="h-8">
-              <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80" alt="Finance 1" className="h-full" />
-            </div>
-            <div className="h-8">
-              <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80" alt="Finance 2" className="h-full" />
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );

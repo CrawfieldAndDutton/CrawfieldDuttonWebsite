@@ -40,17 +40,6 @@ const TargetMarkets = () => {
       ]
     },
     {
-      id: 'employers',
-      icon: <Briefcase size={32} className="text-brand-gold" />,
-      title: 'Employers',
-      description: 'Streamline background checks with thorough financial verification.',
-      features: [
-        { icon: <Users size={16} />, text: 'Candidate verification' },
-        { icon: <Shield size={16} />, text: 'Risk profiling' },
-        { icon: <Lock size={16} />, text: 'Compliant processes' }
-      ]
-    },
-    {
       id: 'insurance',
       icon: <Shield size={32} className="text-brand-gold" />,
       title: 'Insurance Companies',
@@ -86,7 +75,7 @@ const TargetMarkets = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {markets.map((market, index) => (
             <div 
               key={market.id}
