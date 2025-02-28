@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router-dom';
-import { Facebook, Twitter, Linkedin, Instagram, ArrowRight } from 'lucide-react';
+import { Facebook, Twitter, Linkedin, Instagram, ArrowRight, Briefcase } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -64,6 +64,15 @@ const Footer = () => {
                   className="text-gray-300 hover:text-brand-gold transition-colors"
                 >
                   Contact Us
+                </Link>
+              </li>
+              <li className="flex items-center space-x-2">
+                <Briefcase size={16} className="text-brand-gold" />
+                <Link 
+                  to="/careers" 
+                  className="text-gray-300 hover:text-brand-gold transition-colors"
+                >
+                  Careers
                 </Link>
               </li>
             </ul>
