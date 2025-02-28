@@ -66,8 +66,7 @@ const Footer = () => {
                   Contact Us
                 </Link>
               </li>
-              <li className="flex items-center space-x-2">
-                <Briefcase size={16} className="text-brand-gold" />
+              <li>
                 <Link 
                   to="/careers" 
                   className="text-gray-300 hover:text-brand-gold transition-colors"
