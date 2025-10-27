@@ -156,8 +156,8 @@ const Pricing = () => {
     },
     {
       name: 'Essential',
-      price: '79',
-      priceSubtext: 'per statement',
+      price: 'Contact For Pricing',
+      // priceSubtext: 'per statement',
       description: 'Comprehensive analysis for lenders',
       features: [
         'Bank statement analysis',
@@ -173,8 +173,8 @@ const Pricing = () => {
     },
     {
       name: 'Enterprise',
-      price: '169',
-      priceSubtext: 'per statement',
+      price: 'Contact For Pricing',
+      // priceSubtext: 'per statement',
       description: 'Advanced analysis with all features',
       features: [
         'All metrics and analysis',
@@ -210,8 +210,8 @@ const Pricing = () => {
     },
     {
       name: 'Essential',
-      price: '39',
-      priceSubtext: 'per statement pull',
+      price: 'Contact For Pricing',
+      // priceSubtext: 'per statement pull',
       description: 'Ongoing monitoring essentials',
       features: [
         'Bank statement analysis',
@@ -227,8 +227,8 @@ const Pricing = () => {
     },
     {
       name: 'Enterprise',
-      price: '79',
-      priceSubtext: 'per statement pull',
+      price: 'Contact For Pricing',
+      // priceSubtext: 'per statement pull',
       description: 'Complete monitoring solution',
       features: [
         'All metrics and analysis',
@@ -355,7 +355,7 @@ const Pricing = () => {
                 
                 <div className="mb-4">
                   <span className="text-4xl font-display font-bold">
-                    {pricingPlan.price === '0' ? 'Free' : `₹${pricingPlan.price}`}
+                    {pricingPlan.price === '0' ? 'Free' : `${pricingPlan.price}`}
                   </span>
                   {pricingPlan.priceSubtext && (
                     <span className="text-gray-500 text-sm ml-1">{pricingPlan.priceSubtext}</span>

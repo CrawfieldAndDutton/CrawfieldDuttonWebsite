@@ -64,7 +64,7 @@ const Navbar = () => {
             </Link>
             
             <Link 
-              to="/login" 
+              to="https://banklens.crawfieldanddutton.com/" 
               className="px-4 py-2 rounded-md text-brand-navy border border-brand-gold hover:bg-brand-gold hover:text-white transition-all duration-300"
             >
               Login
