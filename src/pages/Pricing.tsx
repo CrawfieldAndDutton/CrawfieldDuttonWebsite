@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 
 const Pricing = () => {
   const [plan, setPlan] = useState<'monthly' | 'yearly'>('monthly');
-  const [segment, setSegment] = useState<'b2c' | 'b2b-underwriting' | 'b2b-monitoring'>('b2c');
+  const [segment, setSegment] = useState<'b2c' | 'b2b-underwriting' | 'b2b-monitoring'>('b2b-underwriting');
   const pricingRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -36,105 +36,105 @@ const Pricing = () => {
   // B2C Plans
   const b2cPlans = {
     monthly: [
-      {
-        name: 'Free',
-        price: '0',
-        priceSubtext: '',
-        description: 'Basic analysis for individuals',
-        features: [
-          '1 bank statement analysis throughout',
-          'Basic analysis metrics',
-          'Limited reporting',
-          'Email support'
-        ],
-        cta: 'Get Started',
-        highlight: false
-      },
-      {
-        name: 'Standard',
-        price: '399',
-        priceSubtext: '/month',
-        description: 'Comprehensive monthly analysis',
-        features: [
-          '1 bank statement analysis per month',
-          'Basic + channeled metrics',
-          'EMI, loan, salary analysis',
-          'Spending analysis',
-          'Savings recommendations',
-          'Mutual fund recommendations',
-          'Priority email support'
-        ],
-        cta: 'Subscribe Now',
-        highlight: true
-      },
-      {
-        name: 'Premium',
-        price: '2,499',
-        priceSubtext: '/month',
-        description: 'Advanced weekly analysis',
-        features: [
-          '1 bank statement analysis per week',
-          'All metrics and analysis',
-          'Extra savings plan',
-          'Investment strategies',
-          'Tax optimization',
-          'Priority phone support',
-          'Personal finance dashboard'
-        ],
-        cta: 'Go Premium',
-        highlight: false
-      }
-    ],
-    yearly: [
-      {
-        name: 'Free',
-        price: '0',
-        priceSubtext: '',
-        description: 'Basic analysis for individuals',
-        features: [
-          '1 bank statement analysis throughout',
-          'Basic analysis metrics',
-          'Limited reporting',
-          'Email support'
-        ],
-        cta: 'Get Started',
-        highlight: false
-      },
-      {
-        name: 'Standard',
-        price: '4,199',
-        priceSubtext: '/year',
-        description: 'Comprehensive monthly analysis',
-        features: [
-          '1 bank statement analysis per month',
-          'Basic + channeled metrics',
-          'EMI, loan, salary analysis',
-          'Spending analysis',
-          'Savings recommendations',
-          'Mutual fund recommendations',
-          'Investment recommendations',
-          'Priority email support'
-        ],
-        cta: 'Subscribe Now',
-        highlight: true
-      },
-      {
-        name: 'Premium',
-        price: '20,999',
-        priceSubtext: '/year',
-        description: 'Advanced weekly analysis',
-        features: [
-          '1 bank statement analysis per week',
-          'All metrics and analysis',
-          'SIF plans',
-          'Investment strategies',
-          'Tax optimization',
-          'Priority phone support',
-          'Personal finance dashboard'
-        ],
-        cta: 'Go Premium',
-        highlight: false
-      }
+    //   {
+    //     name: 'Free',
+    //     price: '0',
+    //     priceSubtext: '',
+    //     description: 'Basic analysis for individuals',
+    //     features: [
+    //       '1 bank statement analysis throughout',
+    //       'Basic analysis metrics',
+    //       'Limited reporting',
+    //       'Email support'
+    //     ],
+    //     cta: 'Get Started',
+    //     highlight: false
+    //   },
+    //   {
+    //     name: 'Standard',
+    //     price: '399',
+    //     priceSubtext: '/month',
+    //     description: 'Comprehensive monthly analysis',
+    //     features: [
+    //       '1 bank statement analysis per month',
+    //       'Basic + channeled metrics',
+    //       'EMI, loan, salary analysis',
+    //       'Spending analysis',
+    //       'Savings recommendations',
+    //       'Mutual fund recommendations',
+    //       'Priority email support'
+    //     ],
+    //     cta: 'Subscribe Now',
+    //     highlight: true
+    //   },
+    //   {
+    //     name: 'Premium',
+    //     price: '2,499',
+    //     priceSubtext: '/month',
+    //     description: 'Advanced weekly analysis',
+    //     features: [
+    //       '1 bank statement analysis per week',
+    //       'All metrics and analysis',
+    //       'Extra savings plan',
+    //       'Investment strategies',
+    //       'Tax optimization',
+    //       'Priority phone support',
+    //       'Personal finance dashboard'
+    //     ],
+    //     cta: 'Go Premium',
+    //     highlight: false
+    //   }
+    // ],
+    // yearly: [
+    //   {
+    //     name: 'Free',
+    //     price: '0',
+    //     priceSubtext: '',
+    //     description: 'Basic analysis for individuals',
+    //     features: [
+    //       '1 bank statement analysis throughout',
+    //       'Basic analysis metrics',
+    //       'Limited reporting',
+    //       'Email support'
+    //     ],
+    //     cta: 'Get Started',
+    //     highlight: false
+    //   },
+    //   {
+    //     name: 'Standard',
+    //     price: '4,199',
+    //     priceSubtext: '/year',
+    //     description: 'Comprehensive monthly analysis',
+    //     features: [
+    //       '1 bank statement analysis per month',
+    //       'Basic + channeled metrics',
+    //       'EMI, loan, salary analysis',
+    //       'Spending analysis',
+    //       'Savings recommendations',
+    //       'Mutual fund recommendations',
+    //       'Investment recommendations',
+    //       'Priority email support'
+    //     ],
+    //     cta: 'Subscribe Now',
+    //     highlight: true
+    //   },
+    //   {
+    //     name: 'Premium',
+    //     price: '20,999',
+    //     priceSubtext: '/year',
+    //     description: 'Advanced weekly analysis',
+    //     features: [
+    //       '1 bank statement analysis per week',
+    //       'All metrics and analysis',
+    //       'SIF plans',
+    //       'Investment strategies',
+    //       'Tax optimization',
+    //       'Priority phone support',
+    //       'Personal finance dashboard'
+    //     ],
+    //     cta: 'Go Premium',
+    //     highlight: false
+    //   }
     ]
   };
 
@@ -273,7 +273,7 @@ const Pricing = () => {
 
           {/* Segment Selector */}
           <div className="flex flex-wrap justify-center mb-8">
-            <button
+            {/* <button
               onClick={() => setSegment('b2c')}
               className={`px-5 py-2 m-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                 segment === 'b2c' 
@@ -282,7 +282,7 @@ const Pricing = () => {
               }`}
             >
               For Individuals (B2C)
-            </button>
+            </button> */}
             <button
               onClick={() => setSegment('b2b-underwriting')}
               className={`px-5 py-2 m-2 rounded-lg text-sm font-medium transition-all duration-300 ${
@@ -306,7 +306,7 @@ const Pricing = () => {
           </div>
 
           {/* Toggle for B2C only */}
-          {segment === 'b2c' && (
+          {/* {segment === 'b2c' && (
             <div className="flex justify-center mb-12">
               <div className="bg-gray-100 p-1 rounded-lg inline-flex">
                 <button
@@ -331,7 +331,7 @@ const Pricing = () => {
                 </button>
               </div>
             </div>
-          )}
+          )} */}
 
           {/* Pricing Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
