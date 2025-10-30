@@ -117,7 +117,7 @@ const Navbar = () => {
             
             <div className="flex space-x-3 pt-3">
               <Link 
-                to="/login" 
+                to="https://banklens.crawfieldanddutton.com/" 
                 className="flex-1 px-4 py-2 rounded-md text-center text-brand-navy border border-brand-gold hover:bg-brand-gold hover:text-white transition-all duration-300"
                 onClick={() => setIsOpen(false)}
               >
