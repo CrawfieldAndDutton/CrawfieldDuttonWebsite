@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Shield, User, Briefcase, PieChart, LineChart, BarChart3, CreditCard, Layers, Database, Lock } from 'lucide-react';
 
 const Features = () => {
-  const [activeTab, setActiveTab] = useState('individuals');
+  const [activeTab, setActiveTab] = useState('lenders');
   const featureRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -39,13 +39,13 @@ const Features = () => {
 
         {/* Tab Navigation */}
         <div className="flex flex-wrap justify-center mb-12 max-w-2xl mx-auto">
-          <TabButton 
+          {/* <TabButton 
             id="individuals" 
             active={activeTab === 'individuals'} 
             onClick={() => setActiveTab('individuals')}
             icon={<User size={18} />}
             text="For Individuals"
-          />
+          /> */}
           <TabButton 
             id="lenders" 
             active={activeTab === 'lenders'} 
