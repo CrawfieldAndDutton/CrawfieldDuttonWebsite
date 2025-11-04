@@ -36,9 +36,9 @@ const Hero = () => {
               <Link to="/signup" className="btn-primary px-8 py-3 rounded-md font-medium flex items-center justify-center">
                 Get Started <ArrowRight size={16} className="ml-2" />
               </Link>
-              <a href="#solutions" className="btn-outline px-8 py-3 rounded-md font-medium flex items-center justify-center">
+              {/* <a href="#solutions" className="btn-outline px-8 py-3 rounded-md font-medium flex items-center justify-center">
                 Explore Solutions
-              </a>
+              </a> */}
             </div>
             
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-8">
