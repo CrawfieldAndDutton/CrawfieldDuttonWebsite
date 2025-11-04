@@ -1,7 +1,7 @@
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { User, Mail, Phone, Lock, Eye, EyeOff, ArrowRight, AlertCircle, CheckCircle } from 'lucide-react';
+import { User, Mail, Phone, ArrowRight, AlertCircle, CheckCircle } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
@@ -9,39 +9,22 @@ const SignUp = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
   const [registered, setRegistered] = useState(false);
-  
-  // Password strength
-  const [passwordStrength, setPasswordStrength] = useState(0);
+  const formRef = useRef<HTMLFormElement>(null);
   
   // Scroll to top on initial load
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   
-  // Check password strength
-  useEffect(() => {
-    let strength = 0;
-    
-    if (password.length > 0) strength += 1;
-    if (password.length >= 8) strength += 1;
-    if (/[A-Z]/.test(password)) strength += 1;
-    if (/[0-9]/.test(password)) strength += 1;
-    if (/[^A-Za-z0-9]/.test(password)) strength += 1;
-    
-    setPasswordStrength(strength);
-  }, [password]);
-
   const handleSignUp = (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
     
     // Basic validation
-    if (!name || !email || !phone || !password) {
+    if (!name || !email || !phone) {
       setError('Please fill in all fields');
       return;
     }
@@ -51,36 +34,9 @@ const SignUp = () => {
       return;
     }
     
-    if (passwordStrength < 3) {
-      setError('Please create a stronger password');
-      return;
-    }
-    
-    // Show simulated signup process
+    // Submit to FormSubmit
     setIsSubmitting(true);
-    
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
-      
-      // For demo purposes, we'll simulate a successful registration
-      console.log('Registration with:', { name, email, phone });
-      setRegistered(true);
-    }, 1500);
-  };
-
-  const getPasswordStrengthText = () => {
-    if (password.length === 0) return '';
-    if (passwordStrength <= 2) return 'Weak';
-    if (passwordStrength <= 4) return 'Medium';
-    return 'Strong';
-  };
-
-  const getPasswordStrengthColor = () => {
-    if (password.length === 0) return 'bg-gray-200';
-    if (passwordStrength <= 2) return 'bg-red-500';
-    if (passwordStrength <= 4) return 'bg-yellow-500';
-    return 'bg-green-500';
+    formRef.current?.submit();
   };
 
   return (
@@ -92,21 +48,21 @@ const SignUp = () => {
           <div className="bg-white rounded-xl shadow-lg overflow-hidden">
             {registered ? (
               <div className="p-8 text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                {/* <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <CheckCircle size={32} className="text-green-500" />
-                </div>
-                <h1 className="text-2xl font-display font-bold text-brand-navy mb-4">
+                </div> */}
+                {/* <h1 className="text-2xl font-display font-bold text-brand-navy mb-4">
                   Registration Successful!
-                </h1>
-                <p className="text-gray-600 mb-6">
+                </h1> */}
+                {/* <p className="text-gray-600 mb-6">
                   Your account has been created successfully. Please check your email to verify your account.
-                </p>
-                <Link
+                </p> */}
+                {/* <Link
                   to="/login"
                   className="inline-flex items-center justify-center w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-brand-gold hover:bg-brand-darkGold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-gold"
                 >
                   Proceed to Login <ArrowRight size={16} className="ml-2" />
-                </Link>
+                </Link> */}
               </div>
             ) : (
               <div className="p-8">
@@ -119,14 +75,21 @@ const SignUp = () => {
                   </p>
                 </div>
                 
-                <form onSubmit={handleSignUp}>
+                <form
+                  ref={formRef}
+                  onSubmit={handleSignUp}
+                  action="https://formsubmit.co/business@crawfieldanddutton.com"
+                  method="POST"
+                >
                   {error && (
                     <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6 flex items-start">
                       <AlertCircle size={18} className="text-red-500 mr-2 mt-0.5 flex-shrink-0" />
                       <p className="text-red-700 text-sm">{error}</p>
                     </div>
                   )}
-                  
+
+                  <input type="hidden" name="_next" value={`${window.location.origin}/#/thank-you`} />
+
                   <div className="space-y-4">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
@@ -139,10 +102,11 @@ const SignUp = () => {
                         <input
                           id="name"
                           type="text"
+                          name="name"
                           value={name}
                           onChange={(e) => setName(e.target.value)}
                           className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-brand-gold focus:border-brand-gold sm:text-sm"
-                          placeholder="John Doe"
+                          placeholder="Your Name"
                           disabled={isSubmitting}
                         />
                       </div>
@@ -159,6 +123,7 @@ const SignUp = () => {
                         <input
                           id="email"
                           type="email"
+                          name="email"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
                           className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-brand-gold focus:border-brand-gold sm:text-sm"
@@ -179,6 +144,7 @@ const SignUp = () => {
                         <input
                           id="phone"
                           type="tel"
+                          name="phone"
                           value={phone}
                           onChange={(e) => setPhone(e.target.value.replace(/\D/g, ''))}
                           className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-brand-gold focus:border-brand-gold sm:text-sm"
@@ -189,77 +155,9 @@ const SignUp = () => {
                       </div>
                     </div>
                     
-                    <div>
-                      <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
-                        Password
-                      </label>
-                      <div className="relative">
-                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                          <Lock size={18} className="text-gray-400" />
-                        </div>
-                        <input
-                          id="password"
-                          type={showPassword ? 'text' : 'password'}
-                          value={password}
-                          onChange={(e) => setPassword(e.target.value)}
-                          className="block w-full pl-10 pr-10 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-brand-gold focus:border-brand-gold sm:text-sm"
-                          placeholder="Create a strong password"
-                          disabled={isSubmitting}
-                        />
-                        <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
-                          <button
-                            type="button"
-                            className="text-gray-400 hover:text-gray-500 focus:outline-none"
-                            onClick={() => setShowPassword(!showPassword)}
-                          >
-                            {showPassword ? (
-                              <EyeOff size={18} />
-                            ) : (
-                              <Eye size={18} />
-                            )}
-                          </button>
-                        </div>
-                      </div>
-                      
-                      {/* Password strength indicator */}
-                      {password.length > 0 && (
-                        <div className="mt-2">
-                          <div className="h-1 w-full bg-gray-200 rounded-full overflow-hidden">
-                            <div 
-                              className={`h-full ${getPasswordStrengthColor()}`} 
-                              style={{ width: `${(passwordStrength / 5) * 100}%` }}
-                            ></div>
-                          </div>
-                          <p className="text-xs text-gray-500 mt-1 flex justify-between">
-                            <span>Password strength:</span>
-                            <span className={
-                              passwordStrength <= 2 ? 'text-red-500' : 
-                              passwordStrength <= 4 ? 'text-yellow-500' : 
-                              'text-green-500'
-                            }>
-                              {getPasswordStrengthText()}
-                            </span>
-                          </p>
-                        </div>
-                      )}
-                      
-                      <ul className="text-xs text-gray-500 mt-2 space-y-1">
-                        <li className="flex items-center">
-                          <span className={`mr-1 ${password.length >= 8 ? 'text-green-500' : 'text-gray-400'}`}>•</span>
-                          At least 8 characters
-                        </li>
-                        <li className="flex items-center">
-                          <span className={`mr-1 ${/[A-Z]/.test(password) ? 'text-green-500' : 'text-gray-400'}`}>•</span>
-                          Contains uppercase letter
-                        </li>
-                        <li className="flex items-center">
-                          <span className={`mr-1 ${/[0-9]/.test(password) ? 'text-green-500' : 'text-gray-400'}`}>•</span>
-                          Contains number
-                        </li>
-                      </ul>
-                    </div>
+                    {/* Password removed as per request */}
                     
-                    <div className="flex items-center">
+                    {/* <div className="flex items-center">
                       <input
                         id="terms"
                         name="terms"
@@ -277,7 +175,7 @@ const SignUp = () => {
                           Privacy Policy
                         </Link>
                       </label>
-                    </div>
+                    </div> */}
                     
                     <div>
                       <button
@@ -291,7 +189,7 @@ const SignUp = () => {
                     </div>
                     
                     <div className="text-center mt-4">
-                      <p className="text-sm text-gray-600">
+                      {/* <p className="text-sm text-gray-600">
                         Already have an account?{' '}
                         <Link
                           to="/login"
@@ -299,7 +197,7 @@ const SignUp = () => {
                         >
                           Login
                         </Link>
-                      </p>
+                      </p> */}
                     </div>
                   </div>
                 </form>
