@@ -100,22 +100,6 @@ const Footer = () => {
                   Blogs
                 </Link>
               </li>
-              <li>
-                <a 
-                  href="https://www.producthunt.com/products/crawfield-dutton?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-crawfield&#0045;dutton" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block transition-opacity hover:opacity-80"
-                >
-                  <img 
-                    src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1047301&theme=light&t=1765538862250" 
-                    alt="Crawfield & Dutton - AI-Powered Financial Intelligence for the Modern Era | Product Hunt" 
-                    style={{ width: '200px', height: '43px' }}
-                    width="200" 
-                    height="43" 
-                  />
-                </a>
-              </li>
             </ul>
           </div>
           

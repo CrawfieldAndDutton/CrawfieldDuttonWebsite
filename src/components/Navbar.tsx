@@ -57,6 +57,12 @@ const Navbar = () => {
               Methodology
             </Link>
             <Link 
+              to="/blogs" 
+              className="text-brand-navy hover:text-brand-gold font-medium transition-colors duration-300"
+            >
+              Blogs
+            </Link>
+            <Link 
               to="/contact" 
               className="text-brand-navy hover:text-brand-gold font-medium transition-colors duration-300"
             >
@@ -106,6 +112,13 @@ const Navbar = () => {
               onClick={() => setIsOpen(false)}
             >
               Methodology
+            </Link>
+            <Link
+              to="/blogs"
+              className="text-brand-navy hover:text-brand-gold font-medium py-2 border-b border-gray-100 transition-colors duration-300"
+              onClick={() => setIsOpen(false)}
+            >
+              Blogs
             </Link>
             <Link
               to="/contact"
