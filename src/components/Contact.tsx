@@ -32,27 +32,25 @@ const Contact = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Check if form was submitted successfully
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('success') === 'true') {
+      setFormSubmitted(true);
+      // Clean up URL
+      window.history.replaceState({}, '', window.location.pathname);
+    }
+  }, []);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+    // Form will submit naturally to formsubmit.co
+    // The _next parameter will redirect back to this page with success=true
     console.log('Form submitted:', formData);
-    setFormSubmitted(true);
-    // Reset form after submission
-    setFormData({
-      name: '',
-      email: '',
-      company: '',
-      message: ''
-    });
-    
-    // In a real implementation, you would send the form data to a server
-    setTimeout(() => {
-      setFormSubmitted(false);
-    }, 5000);
   };
 
   return (
@@ -80,7 +78,13 @@ const Contact = () => {
                   <p className="text-sm mt-1">We'll get back to you as soon as possible.</p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit}>
+                <form 
+                  onSubmit={handleSubmit}
+                  action="https://formsubmit.co/business@crawfieldanddutton.com" 
+                  method="POST"
+                >
+                  <input type="hidden" name="_captcha" value="false" />
+                  <input type="hidden" name="_next" value={typeof window !== 'undefined' ? `${window.location.origin}${window.location.pathname}?success=true` : '/?success=true'} />
                   <div className="space-y-4">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
