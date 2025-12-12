@@ -106,8 +106,8 @@ const TargetMarkets = () => {
         {/* Stats Section */}
         <div className="mt-20 grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
           <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-            <p className="text-4xl font-display font-bold text-brand-gold mb-2">150+</p>
-            <p className="text-gray-600">Registered Users</p>
+            <p className="text-4xl font-display font-bold text-brand-gold mb-2">5+</p>
+            <p className="text-gray-600">Subscribed Clients</p>
           </div>
           
           <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">

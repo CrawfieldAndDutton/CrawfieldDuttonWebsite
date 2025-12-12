@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router-dom';
-import { Facebook, Twitter, Linkedin, Instagram, ArrowRight, Briefcase } from 'lucide-react';
+import { Facebook, X, Linkedin, Instagram, ArrowRight, Briefcase } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -28,10 +28,12 @@ const Footer = () => {
             </p>
             
             <div className="flex space-x-4">
-              <SocialIcon icon={<Facebook size={18} />} href="#" />
-              <SocialIcon icon={<Twitter size={18} />} href="#" />
-              <SocialIcon icon={<Linkedin size={18} />} href="#" />
-              <SocialIcon icon={<Instagram size={18} />} href="#" />
+              <SocialIcon icon={<Facebook size={18} />} href="https://www.facebook.com/people/Crawfield-Dutton-Enterprise-Solutions/61573444297784/" />
+              <div className="w-8 h-8 rounded-full bg-brand-lightNavy flex items-center justify-center">
+                <X size={18} />
+              </div>
+              <SocialIcon icon={<Linkedin size={18} />} href="https://www.linkedin.com/company/crawfield-and-dutton-enterprise-solutions" />
+              <SocialIcon icon={<Instagram size={18} />} href="https://www.instagram.com/crawfieldanddutton/" />
             </div>
           </div>
           
@@ -93,7 +95,27 @@ const Footer = () => {
                   Terms of Service
                 </Link>
               </li>
-              <FooterLink href="#api-docs">API Documentation (Coming Soon)</FooterLink>
+              <li>
+                <Link to="/blogs" className="text-gray-300 hover:text-brand-gold transition-colors">
+                  Blogs
+                </Link>
+              </li>
+              <li>
+                <a 
+                  href="https://www.producthunt.com/products/crawfield-dutton?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-crawfield&#0045;dutton" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-block transition-opacity hover:opacity-80"
+                >
+                  <img 
+                    src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1047301&theme=light&t=1765538862250" 
+                    alt="Crawfield & Dutton - AI-Powered Financial Intelligence for the Modern Era | Product Hunt" 
+                    style={{ width: '200px', height: '43px' }}
+                    width="200" 
+                    height="43" 
+                  />
+                </a>
+              </li>
             </ul>
           </div>
           

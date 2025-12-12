@@ -38,6 +38,14 @@ const ContactUs = () => {
   // Scroll to top on initial load
   useEffect(() => {
     window.scrollTo(0, 0);
+    
+    // Check if form was submitted successfully
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('success') === 'true') {
+      setFormSubmitted(true);
+      // Clean up URL
+      window.history.replaceState({}, '', window.location.pathname);
+    }
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -46,23 +54,9 @@ const ContactUs = () => {
   };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+    // Form will submit naturally to formsubmit.co
+    // The _next parameter will redirect back to this page with success=true
     console.log('Form submitted:', formData);
-    setFormSubmitted(true);
-    // Reset form after submission
-    setFormData({
-      name: '',
-      email: '',
-      company: '',
-      phone: '',
-      subject: '',
-      message: ''
-    });
-    
-    // In a real implementation, you would send the form data to a server
-    setTimeout(() => {
-      setFormSubmitted(false);
-    }, 5000);
   };
 
   const contactCards = [
@@ -162,7 +156,12 @@ const ContactUs = () => {
                     <p className="text-sm mt-1">We'll get back to you as soon as possible.</p>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit}>
+                  <form 
+                    action="https://formsubmit.co/business@crawfieldanddutton.com" 
+                    method="POST"
+                  >
+                    <input type="hidden" name="_captcha" value="false" />
+                    <input type="hidden" name="_next" value={typeof window !== 'undefined' ? `${window.location.origin}/contact?success=true` : '/contact?success=true'} />
                     <div className="space-y-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
