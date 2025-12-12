@@ -32,13 +32,27 @@ const Hero = () => {
               and creditworthiness through cutting-edge identity intelligence solutions.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 pt-4 items-center">
               <Link to="/signup" className="btn-primary px-8 py-3 rounded-md font-medium flex items-center justify-center">
                 Get Started <ArrowRight size={16} className="ml-2" />
               </Link>
-              <a href="#solutions" className="btn-outline px-8 py-3 rounded-md font-medium flex items-center justify-center">
-                Explore Solutions
+              <a 
+                href="https://www.producthunt.com/products/crawfield-dutton?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-crawfield&#0045;dutton" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-block transition-opacity hover:opacity-80"
+              >
+                <img 
+                  src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1047301&theme=light&t=1765538862250" 
+                  alt="Crawfield & Dutton - AI-Powered Financial Intelligence for the Modern Era | Product Hunt" 
+                  style={{ width: '200px', height: '43px' }}
+                  width="200" 
+                  height="43" 
+                />
               </a>
+              {/* <a href="#solutions" className="btn-outline px-8 py-3 rounded-md font-medium flex items-center justify-center">
+                Explore Solutions
+              </a> */}
             </div>
             
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-8">

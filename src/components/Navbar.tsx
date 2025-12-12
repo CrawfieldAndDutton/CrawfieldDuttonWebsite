@@ -57,6 +57,12 @@ const Navbar = () => {
               Methodology
             </Link>
             <Link 
+              to="/blogs" 
+              className="text-brand-navy hover:text-brand-gold font-medium transition-colors duration-300"
+            >
+              Blogs
+            </Link>
+            <Link 
               to="/contact" 
               className="text-brand-navy hover:text-brand-gold font-medium transition-colors duration-300"
             >
@@ -64,7 +70,7 @@ const Navbar = () => {
             </Link>
             
             <Link 
-              to="/login" 
+              to="https://banklens.crawfieldanddutton.com/" 
               className="px-4 py-2 rounded-md text-brand-navy border border-brand-gold hover:bg-brand-gold hover:text-white transition-all duration-300"
             >
               Login
@@ -108,6 +114,13 @@ const Navbar = () => {
               Methodology
             </Link>
             <Link
+              to="/blogs"
+              className="text-brand-navy hover:text-brand-gold font-medium py-2 border-b border-gray-100 transition-colors duration-300"
+              onClick={() => setIsOpen(false)}
+            >
+              Blogs
+            </Link>
+            <Link
               to="/contact"
               className="text-brand-navy hover:text-brand-gold font-medium py-2 border-b border-gray-100 transition-colors duration-300"
               onClick={() => setIsOpen(false)}
@@ -117,7 +130,7 @@ const Navbar = () => {
             
             <div className="flex space-x-3 pt-3">
               <Link 
-                to="/login" 
+                to="https://banklens.crawfieldanddutton.com/" 
                 className="flex-1 px-4 py-2 rounded-md text-center text-brand-navy border border-brand-gold hover:bg-brand-gold hover:text-white transition-all duration-300"
                 onClick={() => setIsOpen(false)}
               >
