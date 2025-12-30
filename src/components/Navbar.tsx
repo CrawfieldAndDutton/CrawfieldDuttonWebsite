@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, TrendingUp, Sparkles } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -62,9 +62,15 @@ const Navbar = () => {
                 <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 py-2 z-50 animate-fade-in-down">
                   <Link
                     to="/banklens"
-                    className="block px-4 py-2 text-brand-navy hover:bg-brand-cream hover:text-brand-gold transition-colors duration-300"
+                    className="relative block px-4 py-2 text-brand-navy hover:bg-brand-cream hover:text-brand-gold transition-colors duration-300 group"
                   >
-                    BankLens
+                    <div className="flex items-center justify-between">
+                      <span>BankLens</span>
+                      <div className="flex items-center gap-1.5">
+                        <Sparkles size={12} className="text-brand-gold animate-pulse" />
+                        <span className="w-2 h-2 bg-gradient-to-r from-brand-gold to-orange-500 rounded-full animate-pulse"></span>
+                      </div>
+                    </div>
                   </Link>
                   <Link
                     to="/kycfabric"
@@ -128,10 +134,16 @@ const Navbar = () => {
               <div className="pl-4 space-y-2">
                 <Link
                   to="/banklens"
-                  className="block text-brand-navy hover:text-brand-gold text-sm transition-colors duration-300"
+                  className="relative block text-brand-navy hover:text-brand-gold text-sm transition-colors duration-300 py-2"
                   onClick={() => setIsOpen(false)}
                 >
-                  BankLens
+                  <div className="flex items-center justify-between">
+                    <span>BankLens</span>
+                    <div className="flex items-center gap-1.5">
+                      <Sparkles size={12} className="text-brand-gold animate-pulse" />
+                      <span className="w-2 h-2 bg-gradient-to-r from-brand-gold to-orange-500 rounded-full animate-pulse"></span>
+                    </div>
+                  </div>
                 </Link>
                 <Link
                   to="/kycfabric"
