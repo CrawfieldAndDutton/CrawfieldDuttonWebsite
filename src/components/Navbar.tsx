@@ -69,12 +69,14 @@ const Navbar = () => {
               Contact
             </Link>
             
-            <Link 
-              to="https://banklens.crawfieldanddutton.com/" 
+            <a 
+              href="https://banklens.crawfieldanddutton.com/" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-4 py-2 rounded-md text-brand-navy border border-brand-gold hover:bg-brand-gold hover:text-white transition-all duration-300"
             >
               Login
-            </Link>
+            </a>
             
             <Link 
               to="/signup" 
@@ -129,13 +131,15 @@ const Navbar = () => {
             </Link>
             
             <div className="flex space-x-3 pt-3">
-              <Link 
-                to="https://banklens.crawfieldanddutton.com/" 
+              <a 
+                href="https://banklens.crawfieldanddutton.com/" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex-1 px-4 py-2 rounded-md text-center text-brand-navy border border-brand-gold hover:bg-brand-gold hover:text-white transition-all duration-300"
                 onClick={() => setIsOpen(false)}
               >
                 Login
-              </Link>
+              </a>
               
               <Link 
                 to="/signup" 

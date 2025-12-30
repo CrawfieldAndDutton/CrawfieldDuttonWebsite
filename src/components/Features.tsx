@@ -118,7 +118,7 @@ const Features = () => {
             
             {activeTab === 'lenders' && (
               <img 
-                src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
+                src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/67607955080161.597768d22e415.gif" 
                 alt="Credit Scoring Dashboard"
                 className="w-full h-auto rounded-2xl object-cover"
               />
@@ -126,7 +126,7 @@ const Features = () => {
             
             {activeTab === 'insurance' && (
               <img 
-                src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
+                src="https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyMnp5eDhhM3hkaXpsMm41YjJuN3R2cTBncXk0MWRjYzZ3c3UxMHhpMyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l378c04F2fjeZ7vH2/giphy.gif" 
                 alt="Insurance Risk Profiling"
                 className="w-full h-auto rounded-2xl object-cover"
               />
