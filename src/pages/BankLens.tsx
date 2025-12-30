@@ -1,6 +1,6 @@
 
 import { useState, useEffect, useRef } from 'react';
-import { ArrowRight, Shield, AlertTriangle, BarChart3, Zap, CheckCircle, Mail, Phone, TrendingDown, DollarSign, Clock, Users, Building, Smartphone, CreditCard, FileText, MessageSquare, Settings, Eye, Target, Brain, Database, Calculator, BookOpen } from 'lucide-react';
+import { ArrowRight, Shield, AlertTriangle, BarChart3, Zap, CheckCircle, Mail, Phone, TrendingDown, TrendingUp, Clock, Users, Building, Smartphone, CreditCard, FileText, MessageSquare, Settings, Eye, Target, Brain, Database, Calculator, BookOpen } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
@@ -91,28 +91,18 @@ const BankLens = () => {
 
   const keyResults = [
     {
-      icon: <TrendingDown size={32} className="text-brand-gold" />,
+      icon: <TrendingDown size={40} className="text-brand-gold" />,
       value: '43%',
       label: 'Reduction in DPD',
-      color: 'text-green-600'
+      color: 'text-green-600',
+      gradient: 'from-green-50 to-white'
     },
     {
-      icon: <DollarSign size={32} className="text-brand-gold" />,
+      icon: <TrendingUp size={40} className="text-brand-gold" />,
       value: '25%',
       label: 'Increase in Recovery',
-      color: 'text-brand-gold'
-    },
-    {
-      icon: <AlertTriangle size={32} className="text-brand-gold" />,
-      value: '6',
-      label: 'Real-time alerts from risk zones',
-      color: 'text-brand-navy'
-    },
-    {
-      icon: <Clock size={32} className="text-brand-gold" />,
-      value: '< 7 days',
-      label: 'Plug-and-play integration',
-      color: 'text-brand-navy'
+      color: 'text-brand-gold',
+      gradient: 'from-brand-cream to-white'
     }
   ];
 
@@ -357,7 +347,7 @@ const BankLens = () => {
                 <div className="absolute top-0 right-0 w-20 h-20 bg-brand-gold/10 rounded-bl-full transform translate-x-10 -translate-y-10 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300"></div>
                 <div className="relative z-10">
                   <div className="w-14 h-14 bg-brand-gold/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand-gold group-hover:scale-110 transition-all duration-300">
-                    <DollarSign size={28} className="text-brand-gold group-hover:text-white transition-colors" />
+                    <BarChart3 size={28} className="text-brand-gold group-hover:text-white transition-colors" />
                   </div>
                   <h3 className="text-lg font-display font-bold text-brand-navy mb-2 group-hover:text-brand-gold transition-colors">Collection Summary View</h3>
                   <p className="text-sm text-gray-600">Recovery performance metrics</p>
@@ -389,32 +379,42 @@ const BankLens = () => {
       </section>
 
       {/* Key Results / Impact */}
-      <section className="py-20 bg-brand-cream/30">
+      <section className="py-20 bg-gradient-to-b from-white via-brand-cream/30 to-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          <div className="text-center mb-16">
             <h2 className={`section-title ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
               Proven <span className="text-brand-gold">Results</span>
             </h2>
+            <p className={`text-gray-600 mt-4 max-w-2xl mx-auto ${isVisible ? 'animate-fade-in-up' : 'opacity-0'} animation-delay-200`}>
+              Real impact from early adopters using BankLens
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {keyResults.map((result, index) => (
               <div
                 key={index}
-                className={`bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-xl transition-all duration-300 ${
+                className={`group relative bg-gradient-to-br ${result.gradient} rounded-2xl shadow-xl p-10 text-center hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-brand-gold/30 overflow-hidden ${
                   isVisible ? 'animate-fade-in-up' : 'opacity-0'
                 }`}
-                style={{ animationDelay: `${index * 100 + 300}ms` }}
+                style={{ animationDelay: `${index * 150 + 300}ms` }}
               >
-                <div className="flex justify-center mb-4">
-                  {result.icon}
+                {/* Decorative background element */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-brand-gold/5 rounded-full blur-2xl transform translate-x-8 -translate-y-8 group-hover:scale-150 transition-transform duration-500"></div>
+                
+                <div className="relative z-10">
+                  <div className="flex justify-center mb-6">
+                    <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                      {result.icon}
+                    </div>
+                  </div>
+                  <div className={`text-6xl md:text-7xl font-display font-bold mb-4 ${result.color} group-hover:scale-105 transition-transform duration-300`}>
+                    {result.value}
+                  </div>
+                  <p className="text-lg text-gray-700 font-semibold">
+                    {result.label}
+                  </p>
                 </div>
-                <div className={`text-5xl font-display font-bold mb-2 ${result.color}`}>
-                  {result.value}
-                </div>
-                <p className="text-gray-600 font-medium">
-                  {result.label}
-                </p>
               </div>
             ))}
           </div>
