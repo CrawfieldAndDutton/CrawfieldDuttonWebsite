@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Building, Users, Shield, User, ArrowRight, FileText, BarChart, Wallet, PieChart, Lock, Briefcase, GraduationCap } from 'lucide-react';
+import { Link } from 'react-router-dom';
 const TargetMarkets = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -97,9 +98,9 @@ const TargetMarkets = () => {
                   </div>)}
               </div>
               
-              <a href="#pricing" className="inline-flex items-center text-sm font-medium text-brand-gold hover:text-brand-darkGold transition-colors">
-                Learn more <ArrowRight size={14} className="ml-1" />
-              </a>
+              <Link to="/contact" className="inline-flex items-center text-sm font-medium text-brand-gold hover:text-brand-darkGold transition-colors">
+                Free Consultation <ArrowRight size={14} className="ml-1" />
+              </Link>
             </div>)}
         </div>
 

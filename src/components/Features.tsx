@@ -1,6 +1,6 @@
 
 import { useState, useEffect, useRef } from 'react';
-import { Shield, User, Briefcase, PieChart, LineChart, BarChart3, CreditCard, Layers, Database, Lock } from 'lucide-react';
+import { Shield, User, Briefcase, PieChart, LineChart, BarChart3, CreditCard, Layers, Database, Lock, Smartphone, Zap } from 'lucide-react';
 
 const Features = () => {
   const [activeTab, setActiveTab] = useState('lenders');
@@ -60,6 +60,13 @@ const Features = () => {
             icon={<Shield size={18} />}
             text="For Insurance"
           />
+          <TabButton 
+            id="fintechs" 
+            active={activeTab === 'fintechs'} 
+            onClick={() => setActiveTab('fintechs')}
+            icon={<Smartphone size={18} />}
+            text="For Fintechs"
+          />
         </div>
 
         {/* Tab Content */}
@@ -104,6 +111,19 @@ const Features = () => {
                 ]}
               />
             )}
+            
+            {activeTab === 'fintechs' && (
+              <TabContent
+                title="Wealth Management & Lending Solutions"
+                description="Empower wealth management and lending fintechs with AI-driven financial intelligence to enhance customer onboarding, risk assessment, and portfolio management."
+                features={[
+                  { icon: <PieChart size={20} />, text: "Wealth management portfolio insights" },
+                  { icon: <BarChart3 size={20} />, text: "Alternative credit scoring for lending" },
+                  { icon: <Zap size={20} />, text: "Real-time financial health monitoring" },
+                  { icon: <Database size={20} />, text: "Customer behavior analytics" }
+                ]}
+              />
+            )}
           </div>
           
           {/* Image/Illustration */}
@@ -128,6 +148,14 @@ const Features = () => {
               <img 
                 src="https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyMnp5eDhhM3hkaXpsMm41YjJuN3R2cTBncXk0MWRjYzZ3c3UxMHhpMyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l378c04F2fjeZ7vH2/giphy.gif" 
                 alt="Insurance Risk Profiling"
+                className="w-full h-auto rounded-2xl object-cover"
+              />
+            )}
+            
+            {activeTab === 'fintechs' && (
+              <img 
+                src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3dDdtaXo3ejZxcmJsNTMzOGo1N2hndTBibGJmc2dyNjRyN3BrMWZndyZlcD12MV9naWZzX3JlbGF0ZWQmY3Q9Zw/rM0wxzvwsv5g4/giphy.gif" 
+                alt="Fintech Solutions"
                 className="w-full h-auto rounded-2xl object-cover"
               />
             )}

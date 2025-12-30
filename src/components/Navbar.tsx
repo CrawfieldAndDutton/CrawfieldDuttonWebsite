@@ -1,11 +1,12 @@
 
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, TrendingUp, Sparkles } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isProductsOpen, setIsProductsOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,24 +45,50 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {/* <NavLink href="/#target-markets">Markets</NavLink> */}
-            <Link 
-              to="/pricing" 
-              className="text-brand-navy hover:text-brand-gold font-medium transition-colors duration-300"
+            {/* Products Dropdown */}
+            <div 
+              className="relative"
+              onMouseEnter={() => setIsProductsOpen(true)}
+              onMouseLeave={() => setIsProductsOpen(false)}
             >
-              Pricing
-            </Link>
-            <Link 
-              to="/methodology" 
-              className="text-brand-navy hover:text-brand-gold font-medium transition-colors duration-300"
-            >
-              Methodology
-            </Link>
+              <button
+                className="flex items-center space-x-1 text-brand-navy hover:text-brand-gold font-medium transition-colors duration-300"
+              >
+                <span>Products</span>
+                <ChevronDown size={16} className={`transition-transform duration-300 ${isProductsOpen ? 'rotate-180' : ''}`} />
+              </button>
+              
+              {isProductsOpen && (
+                <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 py-2 z-50 animate-fade-in-down">
+                  <Link
+                    to="/banklens"
+                    className="relative block px-4 py-2 text-brand-navy hover:bg-brand-cream hover:text-brand-gold transition-colors duration-300 group"
+                  >
+                    <div className="flex items-center justify-between">
+                      <span>BankLens</span>
+                      <div className="flex items-center gap-1.5">
+                        <Sparkles size={12} className="text-brand-gold animate-pulse" />
+                        <span className="w-2 h-2 bg-gradient-to-r from-brand-gold to-orange-500 rounded-full animate-pulse"></span>
+                      </div>
+                    </div>
+                  </Link>
+                  <Link
+                    to="/kycfabric"
+                    className="block px-4 py-2 text-brand-navy hover:bg-brand-cream hover:text-brand-gold transition-colors duration-300"
+                  >
+                    KYCFabric
+                  </Link>
+                </div>
+              )}
+            </div>
+            
             <Link 
               to="/blogs" 
               className="text-brand-navy hover:text-brand-gold font-medium transition-colors duration-300"
             >
               Blogs
             </Link>
+            
             <Link 
               to="/contact" 
               className="text-brand-navy hover:text-brand-gold font-medium transition-colors duration-300"
@@ -101,20 +128,33 @@ const Navbar = () => {
         <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg animate-fade-in-down">
           <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
             {/* <MobileNavLink href="/#target-markets" onClick={() => setIsOpen(false)}>Markets</MobileNavLink> */}
-            <Link
-              to="/pricing"
-              className="text-brand-navy hover:text-brand-gold font-medium py-2 border-b border-gray-100 transition-colors duration-300"
-              onClick={() => setIsOpen(false)}
-            >
-              Pricing
-            </Link>
-            <Link
-              to="/methodology"
-              className="text-brand-navy hover:text-brand-gold font-medium py-2 border-b border-gray-100 transition-colors duration-300"
-              onClick={() => setIsOpen(false)}
-            >
-              Methodology
-            </Link>
+            {/* Products in Mobile Menu */}
+            <div className="py-2 border-b border-gray-100">
+              <div className="text-brand-navy font-medium mb-2">Products</div>
+              <div className="pl-4 space-y-2">
+                <Link
+                  to="/banklens"
+                  className="relative block text-brand-navy hover:text-brand-gold text-sm transition-colors duration-300 py-2"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <div className="flex items-center justify-between">
+                    <span>BankLens</span>
+                    <div className="flex items-center gap-1.5">
+                      <Sparkles size={12} className="text-brand-gold animate-pulse" />
+                      <span className="w-2 h-2 bg-gradient-to-r from-brand-gold to-orange-500 rounded-full animate-pulse"></span>
+                    </div>
+                  </div>
+                </Link>
+                <Link
+                  to="/kycfabric"
+                  className="block text-brand-navy hover:text-brand-gold text-sm transition-colors duration-300"
+                  onClick={() => setIsOpen(false)}
+                >
+                  KYCFabric
+                </Link>
+              </div>
+            </div>
+            
             <Link
               to="/blogs"
               className="text-brand-navy hover:text-brand-gold font-medium py-2 border-b border-gray-100 transition-colors duration-300"
@@ -122,6 +162,7 @@ const Navbar = () => {
             >
               Blogs
             </Link>
+            
             <Link
               to="/contact"
               className="text-brand-navy hover:text-brand-gold font-medium py-2 border-b border-gray-100 transition-colors duration-300"
