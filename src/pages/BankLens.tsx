@@ -10,6 +10,7 @@ const BankLens = () => {
   const demoRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [heroVisible, setHeroVisible] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -17,6 +18,11 @@ const BankLens = () => {
     email: '',
     phone: ''
   });
+
+  useEffect(() => {
+    // Make hero visible immediately on mount
+    setHeroVisible(true);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -187,17 +193,17 @@ const BankLens = () => {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <div className={`inline-flex items-center space-x-2 bg-brand-cream px-4 py-2 rounded-full border border-brand-gold/30 mb-6 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
+            <div className={`inline-flex items-center space-x-2 bg-brand-cream px-4 py-2 rounded-full border border-brand-gold/30 mb-6 ${heroVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
               <Shield size={16} className="text-brand-gold" />
               <span className="text-sm font-medium text-brand-navy">India's First AI-Powered Loan Monitoring Solution</span>
             </div>
             
-            <h1 className={`text-5xl md:text-6xl font-display font-bold mb-12 text-brand-navy ${isVisible ? 'animate-fade-in-up' : 'opacity-0'} animation-delay-200`}>
+            <h1 className={`text-5xl md:text-6xl font-display font-bold mb-12 text-brand-navy ${heroVisible ? 'animate-fade-in-up' : 'opacity-0'} animation-delay-200`}>
               Stop Risk <span className="text-brand-gold">Before It Starts</span>
             </h1>
             
             {/* Demo Video */}
-            <div className={`max-w-4xl mx-auto ${isVisible ? 'animate-fade-in-up' : 'opacity-0'} animation-delay-600`}>
+            <div className={`max-w-4xl mx-auto ${heroVisible ? 'animate-fade-in-up' : 'opacity-0'} animation-delay-600`}>
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-brand-gold/30 bg-brand-navy">
                 <div className="aspect-video">
                   <iframe
@@ -214,7 +220,7 @@ const BankLens = () => {
               </div>
             </div>
             
-            <div className={`flex flex-col sm:flex-row gap-4 justify-center mt-8 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'} animation-delay-700`}>
+            <div className={`flex flex-col sm:flex-row gap-4 justify-center mt-8 ${heroVisible ? 'animate-fade-in-up' : 'opacity-0'} animation-delay-700`}>
               <button
                 onClick={scrollToForm}
                 className="inline-flex items-center px-8 py-4 bg-transparent border-2 border-brand-gold text-brand-gold rounded-lg font-medium hover:bg-brand-gold hover:text-white transition-all duration-300"
@@ -224,7 +230,7 @@ const BankLens = () => {
             </div>
             
             {/* Quick Links */}
-            <div className={`flex items-center justify-center gap-6 mt-8 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'} animation-delay-700`}>
+            <div className={`flex items-center justify-center gap-6 mt-8 ${heroVisible ? 'animate-fade-in-up' : 'opacity-0'} animation-delay-700`}>
               <div className="h-px bg-gray-300 flex-1 max-w-[100px]"></div>
               <div className="flex items-center gap-4">
                 <Link
