@@ -199,7 +199,8 @@ const BankLens = () => {
             </div>
             
             <h1 className={`text-5xl md:text-6xl font-display font-bold mb-12 text-brand-navy ${heroVisible ? 'animate-fade-in-up' : 'opacity-0'} animation-delay-200`}>
-              Stop Risk <span className="text-brand-gold">Before It Starts</span>
+              Loan Monitoring Engine for<br />
+              <span className="text-brand-gold">Every Rupee Disbursed</span>
             </h1>
             
             {/* Demo Video */}
