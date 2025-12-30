@@ -47,11 +47,7 @@ const Contact = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    // Form will submit naturally to formsubmit.co
-    // The _next parameter will redirect back to this page with success=true
-    console.log('Form submitted:', formData);
-  };
+  // Removed handleSubmit - form submits naturally to formsubmit.co
 
   return (
     <section id="contact" className="py-20 bg-white" ref={contactRef}>
@@ -79,12 +75,11 @@ const Contact = () => {
                 </div>
               ) : (
                 <form 
-                  onSubmit={handleSubmit}
                   action="https://formsubmit.co/business@crawfieldanddutton.com" 
                   method="POST"
                 >
                   <input type="hidden" name="_captcha" value="false" />
-                  <input type="hidden" name="_next" value={typeof window !== 'undefined' ? `${window.location.origin}${window.location.pathname}?success=true` : '/?success=true'} />
+                  <input type="hidden" name="_next" value={typeof window !== 'undefined' ? `${window.location.origin}/#/?success=true` : '/#/?success=true'} />
                   <div className="space-y-4">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>

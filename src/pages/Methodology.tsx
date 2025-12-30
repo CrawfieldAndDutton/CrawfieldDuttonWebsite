@@ -1,6 +1,6 @@
 
 import { useState, useEffect, useRef } from 'react';
-import { ChevronDown, ChevronUp, FileText, BarChart3, Shield, LineChart, PieChart, Briefcase, DollarSign, Wallet, CreditCard, Activity } from 'lucide-react';
+import { ChevronDown, ChevronUp, FileText, BarChart3, Shield, LineChart, PieChart, Briefcase, DollarSign, Wallet, CreditCard, Activity, Clock, Receipt } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
@@ -61,7 +61,7 @@ type UseCase = {
 const Methodology = () => {
   const pageRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
-  const [activeTab, setActiveTab] = useState<'bank' | 'demat'>('bank');
+  const [activeTab, setActiveTab] = useState<'bank' | 'demat' | 'gst'>('bank');
   
   // Expand/collapse state for each section
   const [expandedSections, setExpandedSections] = useState({
@@ -82,7 +82,16 @@ const Methodology = () => {
     sectoral: false,
     liquidity: false,
     behavioral: false,
-    demat_fraud: false
+    demat_fraud: false,
+    // GST sections
+    revenue: false,
+    compliance: false,
+    business_health: false,
+    cashflow: false,
+    industry: false,
+    vendor_customer: false,
+    growth: false,
+    gst_risk: false
   });
 
   const toggleSection = (section: keyof typeof expandedSections) => {
@@ -532,6 +541,237 @@ const Methodology = () => {
     }
   ];
 
+  // GST Data Analysis Data
+  const gstDataMetrics = [
+    {
+      id: 'revenue',
+      title: 'Revenue & Turnover Analysis',
+      icon: <DollarSign size={24} />,
+      metrics: [
+        {
+          title: 'Monthly/Quarterly Revenue Trends',
+          description: 'Tracks business growth patterns, seasonal variations, and revenue consistency over time.',
+        },
+        {
+          title: 'Annual Turnover Assessment',
+          description: 'Calculates total business turnover to assess scale and eligibility for loan amounts.',
+        },
+        {
+          title: 'Revenue Growth Rate (YoY/QoQ)',
+          description: 'Identifies expanding businesses vs. declining or stagnant operations.',
+        },
+        {
+          title: 'Revenue Concentration Risk',
+          description: 'Detects over-dependence on single customers or products indicating business vulnerability.',
+        }
+      ]
+    },
+    {
+      id: 'compliance',
+      title: 'Tax Compliance & Payment Patterns',
+      icon: <Shield size={24} />,
+      metrics: [
+        {
+          title: 'GST Filing Regularity',
+          description: 'On-time filings indicate disciplined business operations and compliance culture.',
+        },
+        {
+          title: 'GST Payment History',
+          description: 'Timely tax payments reflect cash flow management and financial discipline.',
+        },
+        {
+          title: 'Late Filing or Payment Penalties',
+          description: 'Frequent delays may indicate cash flow stress or operational inefficiencies.',
+        },
+        {
+          title: 'Input Tax Credit (ITC) Utilization',
+          description: 'Efficient ITC claims show proper vendor management and cost optimization.',
+        },
+        {
+          title: 'GST Return Reconciliation',
+          description: 'Mismatches between GSTR-1, GSTR-2A, and GSTR-3B indicate potential discrepancies.',
+        }
+      ]
+    },
+    {
+      id: 'business_health',
+      title: 'Business Health Indicators',
+      icon: <Activity size={24} />,
+      metrics: [
+        {
+          title: 'Profit Margin Analysis',
+          description: 'Gross and net profit margins derived from GST data indicate business profitability.',
+        },
+        {
+          title: 'Operating Efficiency',
+          description: 'Ratio of output to input taxes reflects operational efficiency and cost management.',
+        },
+        {
+          title: 'Business Continuity',
+          description: 'Consistent GST filings across months indicate stable, ongoing operations.',
+        },
+        {
+          title: 'Scale of Operations',
+          description: 'Turnover thresholds (small, medium, large) help categorize business size for risk assessment.',
+        }
+      ]
+    },
+    {
+      id: 'cashflow',
+      title: 'Cash Flow Analysis',
+      icon: <Wallet size={24} />,
+      metrics: [
+        {
+          title: 'Sales-to-Payment Cycle',
+          description: 'Time gap between invoice generation (GSTR-1) and payment receipt indicates cash flow health.',
+        },
+        {
+          title: 'Working Capital Requirements',
+          description: 'GST data helps estimate working capital needs based on revenue patterns.',
+        },
+        {
+          title: 'Seasonal Cash Flow Patterns',
+          description: 'Identifies peak and lean periods for better loan repayment scheduling.',
+        },
+        {
+          title: 'Outstanding Receivables Estimation',
+          description: 'Gap between sales invoices and actual collections indicates receivables management.',
+        }
+      ]
+    },
+    {
+      id: 'industry',
+      title: 'Industry & Sector Analysis',
+      icon: <BarChart3 size={24} />,
+      metrics: [
+        {
+          title: 'Business Sector Classification',
+          description: 'GST HSN/SAC codes identify industry type (manufacturing, services, trading, etc.).',
+        },
+        {
+          title: 'Industry Growth Trends',
+          description: 'Comparison with sector benchmarks helps assess business performance relative to peers.',
+        },
+        {
+          title: 'Product/Service Mix',
+          description: 'Diversification across multiple HSN codes indicates business resilience.',
+        },
+        {
+          title: 'Geographic Market Presence',
+          description: 'Inter-state vs. intra-state transactions reveal market reach and expansion.',
+        }
+      ]
+    },
+    {
+      id: 'vendor_customer',
+      title: 'Vendor & Customer Analysis',
+      icon: <Briefcase size={24} />,
+      metrics: [
+        {
+          title: 'Vendor Base Stability',
+          description: 'Consistent vendor relationships indicate reliable supply chain and business stability.',
+        },
+        {
+          title: 'Customer Concentration Risk',
+          description: 'Over-reliance on few customers increases default risk if key clients leave.',
+        },
+        {
+          title: 'B2B vs. B2C Transaction Mix',
+          description: 'B2B businesses typically have more predictable revenue streams than B2C.',
+        },
+        {
+          title: 'Payment Terms & Credit Period',
+          description: 'Analysis of invoice dates vs. payment dates reveals credit terms and collection efficiency.',
+        },
+        {
+          title: 'Vendor Payment Patterns',
+          description: 'Regular vendor payments indicate healthy supplier relationships and cash flow.',
+        }
+      ]
+    },
+    {
+      id: 'growth',
+      title: 'Growth Trends & Expansion Indicators',
+      icon: <LineChart size={24} />,
+      metrics: [
+        {
+          title: 'Revenue Growth Trajectory',
+          description: 'Sustained growth over multiple quarters indicates business expansion and scalability.',
+        },
+        {
+          title: 'New Product/Service Lines',
+          description: 'Introduction of new HSN codes shows business diversification and innovation.',
+        },
+        {
+          title: 'Market Expansion',
+          description: 'Increase in inter-state transactions indicates geographic expansion.',
+        },
+        {
+          title: 'Investment in Capital Goods',
+          description: 'High-value purchases with ITC claims indicate business investment and growth plans.',
+        },
+        {
+          title: 'Capacity Utilization Trends',
+          description: 'Increasing output taxes relative to input taxes suggests better capacity utilization.',
+        }
+      ]
+    },
+    {
+      id: 'gst_risk',
+      title: 'Risk Assessment & Red Flags',
+      icon: <Shield size={24} />,
+      metrics: [
+        {
+          title: 'Sudden Revenue Decline',
+          description: 'Sharp drop in turnover may indicate business distress, market challenges, or operational issues.',
+        },
+        {
+          title: 'Irregular Filing Patterns',
+          description: 'Frequent late filings or missing returns suggest financial or operational stress.',
+        },
+        {
+          title: 'High ITC Mismatches',
+          description: 'Discrepancies between claimed and available ITC may indicate vendor payment issues or fraud.',
+        },
+        {
+          title: 'Frequent Amendment Returns',
+          description: 'Multiple corrections to GST returns may indicate accounting errors or manipulation attempts.',
+        },
+        {
+          title: 'Zero or Minimal Tax Liability',
+          description: 'Consistently zero tax payments despite high turnover may indicate tax evasion or underreporting.',
+        },
+        {
+          title: 'Suspicious Transaction Patterns',
+          description: 'Unusual spikes, circular transactions, or fake invoices detected through data analytics.',
+        }
+      ]
+    }
+  ];
+
+  const gstUseCases: UseCase[] = [
+    {
+      icon: <Briefcase size={24} className="text-brand-gold" />,
+      title: "Banks & NBFCs",
+      description: "Business loan underwriting, credit risk assessment, and loan monitoring."
+    },
+    {
+      icon: <FileText size={24} className="text-brand-gold" />,
+      title: "Credit Rating Agencies",
+      description: "Enhanced business credit scoring and risk profiling."
+    },
+    {
+      icon: <BarChart3 size={24} className="text-brand-gold" />,
+      title: "Invoice Financing Platforms",
+      description: "Verify business authenticity and assess invoice quality for financing."
+    },
+    {
+      icon: <Shield size={24} className="text-brand-gold" />,
+      title: "Trade Finance Providers",
+      description: "Evaluate business health for supply chain financing and trade credit."
+    }
+  ];
+
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -548,7 +788,7 @@ const Methodology = () => {
           </div>
 
           {/* Tab Navigation */}
-          <div className="flex flex-wrap justify-center mb-12 max-w-xl mx-auto">
+          <div className="flex flex-wrap justify-center mb-12 max-w-2xl mx-auto">
             <button
               onClick={() => setActiveTab('bank')}
               className={`flex items-center space-x-2 px-5 py-3 m-2 rounded-lg text-sm font-medium transition-all duration-300 ${
@@ -561,13 +801,28 @@ const Methodology = () => {
               <span>Bank Statement Analysis</span>
             </button>
             <button
-              onClick={() => setActiveTab('demat')}
+              onClick={() => setActiveTab('gst')}
               className={`flex items-center space-x-2 px-5 py-3 m-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                activeTab === 'gst' 
+                  ? 'bg-brand-gold text-white shadow-gold' 
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              <Receipt size={18} />
+              <span>GST Data Analysis</span>
+            </button>
+            <button
+              onClick={() => setActiveTab('demat')}
+              className={`relative flex items-center space-x-2 px-5 py-3 m-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                 activeTab === 'demat' 
                   ? 'bg-brand-gold text-white shadow-gold' 
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
+              <div className="absolute -top-2 -right-2 bg-orange-500 text-white text-[10px] font-semibold px-2 py-0.5 rounded-full flex items-center space-x-1 shadow-md z-10">
+                <Clock size={10} />
+                <span>Coming Soon</span>
+              </div>
               <LineChart size={18} />
               <span>Demat Account Analysis</span>
             </button>
@@ -608,6 +863,55 @@ const Methodology = () => {
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     {bankUseCases.map((useCase, index) => (
+                      <div 
+                        key={index} 
+                        className="bg-white p-5 rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-all"
+                      >
+                        <div className="flex items-center space-x-3 mb-3">
+                          <div className="p-2 bg-brand-cream rounded-lg text-brand-gold flex-shrink-0">
+                            {useCase.icon}
+                          </div>
+                          <h4 className="font-medium text-brand-navy">{useCase.title}</h4>
+                        </div>
+                        <p className="text-gray-600 text-sm">{useCase.description}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </>
+            ) : activeTab === 'gst' ? (
+              <>
+                <div className="mb-8 bg-brand-cream/30 p-6 rounded-xl border border-brand-lightGold">
+                  <h2 className="text-2xl font-display font-bold text-brand-navy mb-4">
+                    GST Data Analysis
+                  </h2>
+                  <p className="text-gray-700">
+                    GST (Goods and Services Tax) data provides comprehensive insights into a business's financial health, 
+                    revenue patterns, compliance behavior, and operational efficiency. Our AI-powered analysis extracts 
+                    critical metrics from GST returns to enable effective loan monitoring and risk assessment for businesses.
+                  </p>
+                </div>
+
+                <div className="space-y-4">
+                  {gstDataMetrics.map(section => (
+                    <MetricSection 
+                      key={section.id}
+                      title={section.title}
+                      icon={section.icon}
+                      metrics={section.metrics}
+                      isExpanded={expandedSections[section.id as keyof typeof expandedSections]}
+                      toggleExpand={() => toggleSection(section.id as keyof typeof expandedSections)}
+                    />
+                  ))}
+                </div>
+
+                {/* Use Cases */}
+                <div className="mt-12">
+                  <h3 className="text-xl font-display font-bold text-brand-navy mb-6 text-center">
+                    How This Data is Used
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    {gstUseCases.map((useCase, index) => (
                       <div 
                         key={index} 
                         className="bg-white p-5 rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-all"

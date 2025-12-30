@@ -53,11 +53,7 @@ const ContactUs = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    // Form will submit naturally to formsubmit.co
-    // The _next parameter will redirect back to this page with success=true
-    console.log('Form submitted:', formData);
-  };
+  // Removed handleSubmit - form submits naturally to formsubmit.co
 
   const contactCards = [
     {
@@ -161,7 +157,7 @@ const ContactUs = () => {
                     method="POST"
                   >
                     <input type="hidden" name="_captcha" value="false" />
-                    <input type="hidden" name="_next" value={typeof window !== 'undefined' ? `${window.location.origin}/contact?success=true` : '/contact?success=true'} />
+                    <input type="hidden" name="_next" value={typeof window !== 'undefined' ? `${window.location.origin}/#/contact?success=true` : '/#/contact?success=true'} />
                     <div className="space-y-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
@@ -265,11 +261,17 @@ const ContactUs = () => {
             {/* Map and Additional Info */}
             <div className={`${isVisible ? 'animate-fade-in-left' : 'opacity-0'} animation-delay-400`}>
               <div className="mb-6 bg-gray-100 rounded-xl overflow-hidden h-64">
-                {/* Replace with actual map embed code */}
-                <div className="w-full h-full bg-gray-300 flex items-center justify-center">
-                  <MapPin size={48} className="text-gray-500" />
-                  <span className="ml-2 text-gray-600">Map Location</span>
-                </div>
+                <iframe
+                  src="https://www.google.com/maps?q=Suren+Sarkar+Road,+Phoolbagan,+Kolkata,+West+Bengal+700010,+India&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="w-full h-full"
+                  title="Crawfield & Dutton Office Location - Suren Sarkar Road, Phoolbagan, Kolkata"
+                ></iframe>
               </div>
               
               <div className="bg-brand-navy rounded-xl shadow-lg p-8 text-white">

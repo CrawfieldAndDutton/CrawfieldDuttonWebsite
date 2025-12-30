@@ -28,28 +28,13 @@ const Hero = () => {
             </h1>
             
             <p className="text-lg text-gray-600 max-w-xl">
-              Leverage AI-driven bank statement analysis to assess financial behavior, spending patterns, 
-              and creditworthiness through cutting-edge identity intelligence solutions.
+              On the goal to become India's first AI powered loan monitoring engine for every rupee disbursed in India.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 pt-4 items-center">
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Link to="/signup" className="btn-primary px-8 py-3 rounded-md font-medium flex items-center justify-center">
                 Get Started <ArrowRight size={16} className="ml-2" />
               </Link>
-              <a 
-                href="https://www.producthunt.com/products/crawfield-dutton?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-crawfield&#0045;dutton" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block transition-opacity hover:opacity-80"
-              >
-                <img 
-                  src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1047301&theme=light&t=1765538862250" 
-                  alt="Crawfield & Dutton - AI-Powered Financial Intelligence for the Modern Era | Product Hunt" 
-                  style={{ width: '200px', height: '43px' }}
-                  width="200" 
-                  height="43" 
-                />
-              </a>
               {/* <a href="#solutions" className="btn-outline px-8 py-3 rounded-md font-medium flex items-center justify-center">
                 Explore Solutions
               </a> */}
@@ -75,7 +60,7 @@ const Hero = () => {
           <div className={`relative ${isVisible ? 'animate-fade-in-left' : 'opacity-0'} animation-delay-300`}>
             <div className="relative rounded-2xl overflow-hidden shadow-gold-lg border border-brand-gold/20">
               <div className="aspect-w-16 aspect-h-9 bg-brand-navy/5 rounded-2xl overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Financial intelligence dashboard" className="object-cover w-full h-full" />
+                <img src="https://i.pinimg.com/originals/2e/e6/99/2ee6998e34c3e2eff7b894c66cfc5267.jpg" alt="Financial intelligence dashboard" className="object-cover w-full h-full" />
               </div>
               
               {/* Stats overlay */}
