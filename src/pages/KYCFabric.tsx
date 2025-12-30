@@ -518,21 +518,12 @@ const KYCFabric = () => {
                     />
                   </div>
                   
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <button
-                      type="submit"
-                      className="flex-1 py-4 bg-brand-gold text-white rounded-lg font-medium hover:bg-brand-darkGold transition-all duration-300 shadow-gold text-lg flex items-center justify-center"
-                    >
-                      Get Early Access <ArrowRight size={20} className="ml-2" />
-                    </button>
-                    <Link
-                      to="/contact"
-                      className="flex-1 py-4 bg-transparent border-2 border-brand-gold text-brand-gold rounded-lg font-medium hover:bg-brand-gold hover:text-white transition-all duration-300 flex items-center justify-center"
-                    >
-                      <BookOpen size={20} className="mr-2" />
-                      See Docs
-                    </Link>
-                  </div>
+                  <button
+                    type="submit"
+                    className="w-full py-4 bg-brand-gold text-white rounded-lg font-medium hover:bg-brand-darkGold transition-all duration-300 shadow-gold text-lg flex items-center justify-center"
+                  >
+                    Talk to our Product Team <ArrowRight size={20} className="ml-2" />
+                  </button>
                 </div>
               </form>
             )}
