@@ -161,7 +161,7 @@ const ContactUs = () => {
                     method="POST"
                   >
                     <input type="hidden" name="_captcha" value="false" />
-                    <input type="hidden" name="_next" value={typeof window !== 'undefined' ? `${window.location.origin}/contact?success=true` : '/contact?success=true'} />
+                    <input type="hidden" name="_next" value={typeof window !== 'undefined' ? `${window.location.origin}/` : '/#'} />
                     <div className="space-y-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>

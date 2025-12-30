@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 
 const Pricing = () => {
   const [plan, setPlan] = useState<'monthly' | 'yearly'>('monthly');
-  const [segment, setSegment] = useState<'b2c' | 'b2b-underwriting' | 'b2b-monitoring'>('b2b-underwriting');
+  const [segment, setSegment] = useState<'individual-monitoring' | 'business-monitoring'>('individual-monitoring');
   const pricingRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -138,62 +138,8 @@ const Pricing = () => {
     ]
   };
 
-  // B2B Loan Underwriting Plans
-  const b2bUnderwritingPlans = [
-    {
-      name: 'Free Trial',
-      price: '0',
-      priceSubtext: '',
-      description: 'Try our platform with limited features',
-      features: [
-        '1 bank statement analysis throughout',
-        'Basic analysis metrics',
-        'Limited API access',
-        'Email support'
-      ],
-      cta: 'Start Free Trial',
-      highlight: false
-    },
-    {
-      name: 'Essential',
-      price: 'Contact For Pricing',
-      // priceSubtext: 'per statement',
-      description: 'Comprehensive analysis for lenders',
-      features: [
-        'Bank statement analysis',
-        'Basic + channeled metrics',
-        'EMI, loan, salary analysis',
-        'Spending pattern detection',
-        'Creditworthiness scoring',
-        'API access',
-        'Priority support'
-      ],
-      cta: 'Get Started',
-      highlight: true
-    },
-    {
-      name: 'Enterprise',
-      price: 'Contact For Pricing',
-      // priceSubtext: 'per statement',
-      description: 'Advanced analysis with all features',
-      features: [
-        'All metrics and analysis',
-        'Mutual fund analysis',
-        'Asset evaluation',
-        'Risk appetite assessment',
-        'Investment strategy analysis',
-        'Tax planning insights',
-        'Compliance reporting',
-        'Premium API access',
-        'Dedicated account manager'
-      ],
-      cta: 'Contact Sales',
-      highlight: false
-    }
-  ];
-
-  // B2B Loan Monitoring Plans
-  const b2bMonitoringPlans = [
+  // Individual Loan Monitoring Plans
+  const individualMonitoringPlans = [
     {
       name: 'Free Trial',
       price: '0',
@@ -246,13 +192,63 @@ const Pricing = () => {
     }
   ];
 
+  // Business Loan Monitoring Plans
+  const businessMonitoringPlans = [
+    {
+      name: 'Free Trial',
+      price: '0',
+      priceSubtext: '',
+      description: 'Try our business monitoring features',
+      features: [
+        '1 GST data analysis throughout',
+        'Basic business metrics',
+        'Limited API access',
+        'Email support'
+      ],
+      cta: 'Start Free Trial',
+      highlight: false
+    },
+    {
+      name: 'Essential',
+      price: 'Contact For Pricing',
+      description: 'Ongoing business monitoring essentials',
+      features: [
+        'GST data analysis',
+        'Revenue & turnover tracking',
+        'Tax compliance monitoring',
+        'Business health indicators',
+        'Cash flow analysis',
+        'Early warning signals',
+        'API access',
+        'Priority support'
+      ],
+      cta: 'Get Started',
+      highlight: true
+    },
+    {
+      name: 'Enterprise',
+      price: 'Contact For Pricing',
+      description: 'Complete business monitoring solution',
+      features: [
+        'All GST metrics and analysis',
+        'Industry & sector analysis',
+        'Vendor & customer insights',
+        'Growth trend monitoring',
+        'Risk assessment & red flags',
+        'Compliance monitoring',
+        'Premium API access',
+        'Dedicated account manager'
+      ],
+      cta: 'Contact Sales',
+      highlight: false
+    }
+  ];
+
   const getCurrentPlans = () => {
-    if (segment === 'b2c') {
-      return b2cPlans[plan];
-    } else if (segment === 'b2b-underwriting') {
-      return b2bUnderwritingPlans;
+    if (segment === 'individual-monitoring') {
+      return individualMonitoringPlans;
     } else {
-      return b2bMonitoringPlans;
+      return businessMonitoringPlans;
     }
   };
 
@@ -273,35 +269,25 @@ const Pricing = () => {
 
           {/* Segment Selector */}
           <div className="flex flex-wrap justify-center mb-8">
-            {/* <button
-              onClick={() => setSegment('b2c')}
-              className={`px-5 py-2 m-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                segment === 'b2c' 
-                  ? 'bg-brand-gold text-white shadow-gold' 
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-              }`}
-            >
-              For Individuals (B2C)
-            </button> */}
             <button
-              onClick={() => setSegment('b2b-underwriting')}
+              onClick={() => setSegment('individual-monitoring')}
               className={`px-5 py-2 m-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                segment === 'b2b-underwriting' 
+                segment === 'individual-monitoring' 
                   ? 'bg-brand-gold text-white shadow-gold' 
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
-              Loan Underwriting (B2B)
+              Individual Loan Monitoring
             </button>
             <button
-              onClick={() => setSegment('b2b-monitoring')}
+              onClick={() => setSegment('business-monitoring')}
               className={`px-5 py-2 m-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                segment === 'b2b-monitoring' 
+                segment === 'business-monitoring' 
                   ? 'bg-brand-gold text-white shadow-gold' 
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
-              Loan Monitoring (B2B)
+              Business Loan Monitoring
             </button>
           </div>
 
@@ -387,7 +373,7 @@ const Pricing = () => {
                   {pricingPlan.cta}
                 </button>
                 
-                {segment.includes('b2b') && index === 2 && (
+                {index === 2 && (
                   <div className="mt-4 text-center text-sm text-gray-500">
                     Contact us for custom bulk pricing
                   </div>

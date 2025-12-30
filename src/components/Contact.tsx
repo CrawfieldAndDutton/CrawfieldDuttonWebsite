@@ -84,7 +84,7 @@ const Contact = () => {
                   method="POST"
                 >
                   <input type="hidden" name="_captcha" value="false" />
-                  <input type="hidden" name="_next" value={typeof window !== 'undefined' ? `${window.location.origin}${window.location.pathname}?success=true` : '/?success=true'} />
+                  <input type="hidden" name="_next" value={typeof window !== 'undefined' ? `${window.location.origin}${window.location.pathname}` : ''} />
                   <div className="space-y-4">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>

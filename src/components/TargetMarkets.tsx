@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Building, Users, Shield, User, ArrowRight, FileText, BarChart, Wallet, PieChart, Lock, Briefcase } from 'lucide-react';
+import { Building, Users, Shield, User, ArrowRight, FileText, BarChart, Wallet, PieChart, Lock, Briefcase, GraduationCap } from 'lucide-react';
 const TargetMarkets = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -48,19 +48,19 @@ const TargetMarkets = () => {
       text: 'Fraud prevention'
     }]
   }, {
-    id: 'individuals',
-    icon: <User size={32} className="text-brand-gold" />,
-    title: 'Individuals',
-    description: 'Gain insights into your financial health for better decision making.',
+    id: 'lms-vendors',
+    icon: <GraduationCap size={32} className="text-brand-gold" />,
+    title: 'LMS Vendors',
+    description: 'Offer early warning signals and recovery intelligence to your clients.',
     features: [{
-      icon: <Wallet size={16} />,
-      text: 'Spending analysis'
-    }, {
-      icon: <PieChart size={16} />,
-      text: 'Savings recommendations'
+      icon: <FileText size={16} />,
+      text: 'Early warning signals'
     }, {
       icon: <BarChart size={16} />,
-      text: 'Investment guidance'
+      text: 'Recovery intelligence'
+    }, {
+      icon: <Wallet size={16} />,
+      text: 'Financial health insights'
     }]
   }];
   return <section id="target-markets" ref={sectionRef} className="py-20 bg-brand-cream/50">
