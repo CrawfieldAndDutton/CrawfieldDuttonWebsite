@@ -17,6 +17,8 @@ import GDPR from "./pages/GDPR";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Blogs from "./pages/Blogs";
+import BankLens from "./pages/BankLens";
+import KYCFabric from "./pages/KYCFabric";
 import NotFound from "./pages/NotFound";
 import ThankYou from "./pages/ThankYou";
 
@@ -40,6 +42,8 @@ const App = () => (
           <Route path="/cookie-policy" element={<CookiePolicy />} />
           <Route path="/gdpr" element={<GDPR />} />
           <Route path="/blogs" element={<Blogs />} />
+          <Route path="/banklens" element={<BankLens />} />
+          <Route path="/kycfabric" element={<KYCFabric />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/thank-you" element={<ThankYou />} />

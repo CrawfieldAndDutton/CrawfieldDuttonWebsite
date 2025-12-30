@@ -42,18 +42,18 @@ const Footer = () => {
               {/* <FooterLink href="/#target-markets">Target Markets</FooterLink> */}
               <li>
                 <Link 
-                  to="/pricing" 
+                  to="/banklens" 
                   className="text-gray-300 hover:text-brand-gold transition-colors"
                 >
-                  Pricing
+                  BankLens
                 </Link>
               </li>
               <li>
                 <Link 
-                  to="/methodology" 
+                  to="/kycfabric" 
                   className="text-gray-300 hover:text-brand-gold transition-colors"
                 >
-                  Methodology
+                  KYCFabric
                 </Link>
               </li>
               {/* <FooterLink href="/#about">About Us</FooterLink> */}

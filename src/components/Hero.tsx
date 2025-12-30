@@ -1,6 +1,5 @@
-import { ArrowRight, BarChart2, Shield, Zap } from 'lucide-react';
+import { BarChart2, Shield, Zap } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   useEffect(() => {
@@ -30,15 +29,6 @@ const Hero = () => {
             <p className="text-lg text-gray-600 max-w-xl">
               On the goal to become India's first AI powered loan monitoring engine for every rupee disbursed in India.
             </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Link to="/signup" className="btn-primary px-8 py-3 rounded-md font-medium flex items-center justify-center">
-                Get Started <ArrowRight size={16} className="ml-2" />
-              </Link>
-              {/* <a href="#solutions" className="btn-outline px-8 py-3 rounded-md font-medium flex items-center justify-center">
-                Explore Solutions
-              </a> */}
-            </div>
             
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-8">
               <div className="flex items-center space-x-2">
