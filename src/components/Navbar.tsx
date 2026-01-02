@@ -83,6 +83,20 @@ const Navbar = () => {
             </div>
             
             <Link 
+              to="/services" 
+              className="text-brand-navy hover:text-brand-gold font-medium transition-colors duration-300"
+            >
+              Services
+            </Link>
+            
+            <Link 
+              to="/industries" 
+              className="text-brand-navy hover:text-brand-gold font-medium transition-colors duration-300"
+            >
+              Industries
+            </Link>
+            
+            <Link 
               to="/blogs" 
               className="text-brand-navy hover:text-brand-gold font-medium transition-colors duration-300"
             >
@@ -154,6 +168,22 @@ const Navbar = () => {
                 </Link>
               </div>
             </div>
+            
+            <Link
+              to="/services"
+              className="text-brand-navy hover:text-brand-gold font-medium py-2 border-b border-gray-100 transition-colors duration-300"
+              onClick={() => setIsOpen(false)}
+            >
+              Services
+            </Link>
+            
+            <Link
+              to="/industries"
+              className="text-brand-navy hover:text-brand-gold font-medium py-2 border-b border-gray-100 transition-colors duration-300"
+              onClick={() => setIsOpen(false)}
+            >
+              Industries
+            </Link>
             
             <Link
               to="/blogs"

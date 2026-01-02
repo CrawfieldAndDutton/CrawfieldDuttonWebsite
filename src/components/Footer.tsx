@@ -56,6 +56,14 @@ const Footer = () => {
                   KYCFabric
                 </Link>
               </li>
+              <li>
+                <Link 
+                  to="/services" 
+                  className="text-gray-300 hover:text-brand-gold transition-colors"
+                >
+                  Services
+                </Link>
+              </li>
               {/* <FooterLink href="/#about">About Us</FooterLink> */}
               <li>
                 <Link 
@@ -95,6 +103,11 @@ const Footer = () => {
               <li>
                 <Link to="/blogs" className="text-gray-300 hover:text-brand-gold transition-colors">
                   Blogs
+                </Link>
+              </li>
+              <li>
+                <Link to="/industries" className="text-gray-300 hover:text-brand-gold transition-colors">
+                  Industries
                 </Link>
               </li>
               <li className="pt-2">
