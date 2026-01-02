@@ -19,6 +19,9 @@ import SignUp from "./pages/SignUp";
 import Blogs from "./pages/Blogs";
 import BankLens from "./pages/BankLens";
 import KYCFabric from "./pages/KYCFabric";
+import Services from "./pages/Services";
+import Portfolio from "./pages/Portfolio";
+import Industries from "./pages/Industries";
 import NotFound from "./pages/NotFound";
 import ThankYou from "./pages/ThankYou";
 
@@ -44,6 +47,9 @@ const App = () => (
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/banklens" element={<BankLens />} />
           <Route path="/kycfabric" element={<KYCFabric />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/industries" element={<Industries />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/thank-you" element={<ThankYou />} />
