@@ -62,6 +62,15 @@ const Blogs = () => {
       date: '2025-01-05',
       readTime: '6 min read',
       category: 'AI & Technology'
+    },
+    {
+      id: '3',
+      title: 'AI Takes 80%: C&D\'s Hybrid Operating Model Shaping the Future of Business',
+      description: 'Discover how Crawfield & Dutton is implementing a hybrid operating model where 80% of tasks are managed by AI and 20% by humans, transforming business operations and reshaping the future of work.',
+      mediumUrl: 'https://medium.com/@crawfieldanddutton/ai-takes-80-c-ds-hybrid-operating-model-shaping-the-future-of-business-40abb4b7e531',
+      date: '2026-01-15',
+      readTime: '7 min read',
+      category: 'AI & Technology'
     }
   ];
 
