@@ -1,13 +1,13 @@
 
 import { useState, useEffect, useRef } from 'react';
-import { ArrowRight, Shield, UserCheck, FileCheck, Lock, CheckCircle, Mail, Phone, Database, Search, Brain, TrendingUp, AlertTriangle, CreditCard, Users, Building, Smartphone, Zap, Code, Settings, Clock, FileText, DollarSign, Briefcase, Activity, Flag, BookOpen, ExternalLink, Gamepad2, Heart, Home } from 'lucide-react';
+import { ArrowRight, Shield, UserCheck, FileCheck, Lock, CheckCircle, Mail, Phone, Database, Search, Brain, TrendingUp, AlertTriangle, CreditCard, Users, Building, Smartphone, Zap, Code, Settings, Clock, FileText, DollarSign, Briefcase, Activity, Flag, BookOpen, ExternalLink, Gamepad2, Heart, Home, IdCard, Car, Server, Globe, UserCircle, Receipt, TrendingDown } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 
 const KYCFabric = () => {
   const pageRef = useRef<HTMLDivElement>(null);
-  const demoRef = useRef<HTMLDivElement>(null);
+  const integrationRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -47,8 +47,8 @@ const KYCFabric = () => {
     }
   }, []);
 
-  const scrollToDemo = () => {
-    demoRef.current?.scrollIntoView({ behavior: 'smooth' });
+  const scrollToIntegration = () => {
+    integrationRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const scrollToForm = () => {
@@ -108,34 +108,49 @@ const KYCFabric = () => {
 
   const useCases = [
     {
+      icon: <Building size={32} className="text-brand-gold" />,
+      title: 'Banking',
+      description: 'Complete KYC verification for account opening, loan processing, and compliance with regulatory requirements'
+    },
+    {
+      icon: <Gamepad2 size={32} className="text-brand-gold" />,
+      title: 'Gaming Platforms',
+      description: 'Verify user authenticity, age verification, and assess financial stability for premium features and in-app purchases'
+    },
+    {
+      icon: <Heart size={32} className="text-brand-gold" />,
+      title: 'Dating Platforms',
+      description: 'Ensure user safety with identity verification, background checks, and fraud prevention for secure connections'
+    },
+    {
+      icon: <UserCircle size={32} className="text-brand-gold" />,
+      title: 'HR & Recruitment',
+      description: 'Verify candidate credentials, employment history, and background checks for hiring decisions'
+    },
+    {
       icon: <DollarSign size={32} className="text-brand-gold" />,
-      title: 'Lending',
-      description: 'Approve smarter with alternative data beyond traditional credit scores'
+      title: 'Lending & NBFCs',
+      description: 'Approve smarter with alternative data beyond traditional credit scores and comprehensive risk assessment'
     },
     {
       icon: <Shield size={32} className="text-brand-gold" />,
       title: 'Insurance',
-      description: 'Detect risk-prone customers before issuing policies'
+      description: 'Detect risk-prone customers before issuing policies and verify policyholder information'
     },
     {
       icon: <CreditCard size={32} className="text-brand-gold" />,
       title: 'BNPL & Credit Cards',
-      description: 'Reduce losses from impulse users and high-risk borrowers'
+      description: 'Reduce losses from impulse users and high-risk borrowers with instant verification'
     },
     {
       icon: <Users size={32} className="text-brand-gold" />,
       title: 'Gig Platforms',
-      description: 'Assess reliability of delivery agents, partners, and contractors'
+      description: 'Assess reliability of delivery agents, partners, and contractors with background verification'
     },
     {
       icon: <Smartphone size={32} className="text-brand-gold" />,
-      title: 'Neo Banks & Personal Finance Apps',
-      description: 'Enrich and personalize customer journeys with financial insights'
-    },
-    {
-      icon: <Gamepad2 size={32} className="text-brand-gold" />,
-      title: 'Gaming & Dating Platforms',
-      description: 'Verify user authenticity and assess financial stability for premium features and subscriptions'
+      title: 'Neo Banks & Fintech',
+      description: 'Enrich and personalize customer journeys with financial insights and seamless onboarding'
     }
   ];
 
@@ -189,7 +204,7 @@ const KYCFabric = () => {
               KYC checks verify identity. KYCFabric tells you who they really are — their behaviors, risk profile, and financial stability in seconds.
             </p>
             <p className={`text-lg text-gray-600 max-w-2xl mx-auto mb-12 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'} animation-delay-400`}>
-              Built for fintechs, lenders, insurers, and platforms.
+              Built for every industry doing KYC - Banking, Gaming, Dating, HR, Fintech, Insurance, and more.
             </p>
             <div className={`flex flex-col sm:flex-row gap-4 justify-center ${isVisible ? 'animate-fade-in-up' : 'opacity-0'} animation-delay-600`}>
               <button
@@ -199,7 +214,7 @@ const KYCFabric = () => {
                 Get Early Access <ArrowRight size={20} className="ml-2" />
               </button>
               <button
-                onClick={scrollToDemo}
+                onClick={scrollToIntegration}
                 className="inline-flex items-center px-8 py-4 bg-transparent border-2 border-brand-gold text-brand-gold rounded-lg font-medium hover:bg-brand-gold hover:text-white transition-all duration-300"
               >
                 <Settings size={20} className="mr-2" />
@@ -218,14 +233,103 @@ const KYCFabric = () => {
               What is <span className="text-brand-gold">KYCFabric</span>?
             </h2>
             <p className={`text-lg text-gray-600 mb-6 leading-relaxed ${isVisible ? 'animate-fade-in-up' : 'opacity-0'} animation-delay-200`}>
-              KYCFabric is an AI-powered enrichment layer built on top of basic KYC. It connects with user-permissioned 
-              data sources like bank statements, employment signals, salary patterns, and behavioral flags, to help 
-              businesses better onboard, underwrite, and serve their customers.
+              KYCFabric is a comprehensive KYC infrastructure platform that verifies identity documents, enriches user profiles with contextual risk data, and automates onboarding workflows through a customized Business Rule Engine (BRE). It connects with multiple backend data sources to ensure high uptime and reliability, providing businesses with real-time verification and risk assessment capabilities.
             </p>
-            <div className={`bg-brand-cream rounded-xl p-6 border-l-4 border-brand-gold ${isVisible ? 'animate-fade-in-up' : 'opacity-0'} animation-delay-300`}>
+            <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'} animation-delay-300`}>
+              <div className="bg-brand-cream rounded-xl p-6 border-l-4 border-brand-gold">
+                <h3 className="text-brand-navy font-bold mb-2 flex items-center">
+                  <Settings size={20} className="mr-2 text-brand-gold" />
+                  Customized BRE
+                </h3>
+                <p className="text-brand-navy">
+                  Our Business Rule Engine automates the entire onboarding process, making decisions based on your custom rules and risk thresholds.
+                </p>
+              </div>
+              <div className="bg-brand-cream rounded-xl p-6 border-l-4 border-brand-gold">
+                <h3 className="text-brand-navy font-bold mb-2 flex items-center">
+                  <Server size={20} className="mr-2 text-brand-gold" />
+                  Multiple Backend Sources
+                </h3>
+                <p className="text-brand-navy">
+                  Integrated with multiple data providers to ensure high uptime, redundancy, and reliable verification services.
+                </p>
+              </div>
+            </div>
+            <div className={`bg-brand-cream rounded-xl p-6 border-l-4 border-brand-gold ${isVisible ? 'animate-fade-in-up' : 'opacity-0'} animation-delay-400`}>
               <p className="text-brand-navy font-medium">
                 Let's say your user is legit. KYCFabric helps you know if they're really stable, really risky, or somewhere in between.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Verification Types */}
+      <section className="py-20 bg-brand-cream/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className={`section-title ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
+              Comprehensive <span className="text-brand-gold">Verification</span> Services
+            </h2>
+            <p className={`text-lg text-gray-600 max-w-3xl mx-auto mt-4 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'} animation-delay-200`}>
+              KYCFabric supports all major Indian identity documents and verification services with multiple backend sources for maximum reliability.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
+            {[
+              { icon: <IdCard size={24} className="text-brand-gold" />, title: 'PAN Verification', desc: 'Permanent Account Number validation' },
+              { icon: <IdCard size={24} className="text-brand-gold" />, title: 'Aadhaar Verification', desc: '12-digit unique identity verification' },
+              { icon: <FileText size={24} className="text-brand-gold" />, title: 'Voter ID Verification', desc: 'Electoral roll validation' },
+              { icon: <Car size={24} className="text-brand-gold" />, title: 'Vehicle RC Verification', desc: 'Vehicle registration document check' },
+              { icon: <Globe size={24} className="text-brand-gold" />, title: 'Passport Verification', desc: 'International travel document validation' },
+              { icon: <IdCard size={24} className="text-brand-gold" />, title: 'Driving Licence Verification', desc: 'DL number and validity check' },
+              { icon: <FileText size={24} className="text-brand-gold" />, title: 'GSTIN Verification', desc: 'GST registration number validation' },
+              { icon: <Phone size={24} className="text-brand-gold" />, title: 'Mobile Lookup', desc: 'Phone number verification and carrier info' },
+              { icon: <Mail size={24} className="text-brand-gold" />, title: 'Email Lookup', desc: 'Email address validation and verification' },
+              { icon: <Briefcase size={24} className="text-brand-gold" />, title: 'Job Verification', desc: 'Employment status and employer check' },
+              { icon: <Shield size={24} className="text-brand-gold" />, title: 'Crime History', desc: 'FIR records, challans, and criminal history' },
+              { icon: <Home size={24} className="text-brand-gold" />, title: 'Asset Verification', desc: 'Property, vehicle, and asset documentation' },
+              { icon: <Building size={24} className="text-brand-gold" />, title: 'Company Verification', desc: 'Business registration and company details validation' },
+              { icon: <Receipt size={24} className="text-brand-gold" />, title: 'Utility Bills Verification', desc: 'Electricity, water, and other utility bill validation' },
+              { icon: <TrendingDown size={24} className="text-brand-gold" />, title: 'Salary Detection', desc: 'Income verification and salary pattern analysis' },
+            ].map((verification, index) => (
+              <div
+                key={index}
+                className={`bg-white rounded-xl shadow-lg border border-gray-100 p-5 text-center hover:shadow-xl transition-all duration-300 ${
+                  isVisible ? 'animate-fade-in-up' : 'opacity-0'
+                }`}
+                style={{ animationDelay: `${index * 50 + 300}ms` }}
+              >
+                <div className="flex justify-center mb-3">
+                  {verification.icon}
+                </div>
+                <h3 className="text-sm font-display font-bold text-brand-navy mb-1">
+                  {verification.title}
+                </h3>
+                <p className="text-xs text-gray-600">
+                  {verification.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA Section */}
+          <div className={`mt-12 text-center ${isVisible ? 'animate-fade-in-up' : 'opacity-0'} animation-delay-1000`}>
+            <div className="bg-gradient-to-r from-brand-navy to-brand-darkNavy rounded-xl p-8 md:p-12 text-white max-w-4xl mx-auto shadow-xl">
+              <h3 className="text-2xl md:text-3xl font-display font-bold mb-4">
+                We Verify <span className="text-brand-gold">Much More</span> Than You Think
+              </h3>
+              <p className="text-lg text-gray-200 mb-6 max-w-2xl mx-auto">
+                From bank statements to employment records, asset ownership to behavioral patterns — 
+                KYCFabric's comprehensive verification ecosystem covers everything you need for complete risk assessment.
+              </p>
+              <button
+                onClick={scrollToForm}
+                className="inline-flex items-center px-8 py-4 bg-brand-gold text-white rounded-lg font-medium hover:bg-brand-darkGold transition-all duration-300 shadow-gold text-lg"
+              >
+                Explore All Verifications <ArrowRight size={20} className="ml-2" />
+              </button>
             </div>
           </div>
         </div>
@@ -344,54 +448,8 @@ const KYCFabric = () => {
         </div>
       </section>
 
-      {/* See the Fabric in Action */}
-      <section ref={demoRef} className="py-20 bg-brand-cream/30">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className={`section-title ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
-                See the <span className="text-brand-gold">Fabric</span> in Action
-              </h2>
-            </div>
-
-            {/* Sample Visual */}
-            <div className={`bg-white rounded-xl shadow-lg p-8 mb-8 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'} animation-delay-200`}>
-              <div className="bg-gradient-to-br from-brand-navy to-brand-darkNavy rounded-lg p-8 text-white">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <h3 className="text-lg font-bold mb-4 text-brand-gold">Risk Profile</h3>
-                    <div className="space-y-2">
-                      <div className="flex justify-between">
-                        <span className="text-gray-300">Stability Score</span>
-                        <span className="font-bold">85/100</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-300">Income Type</span>
-                        <span className="font-bold">Salaried</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-300">Risk Level</span>
-                        <span className="font-bold text-green-400">Low</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold mb-4 text-brand-gold">Enrichment Tags</h3>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="px-3 py-1 bg-brand-gold/20 rounded-full text-xs">Regular Income</span>
-                      <span className="px-3 py-1 bg-brand-gold/20 rounded-full text-xs">Low Risk</span>
-                      <span className="px-3 py-1 bg-brand-gold/20 rounded-full text-xs">Stable</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Integration Options */}
-      <section className="py-20 bg-white">
+      <section ref={integrationRef} className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className={`section-title ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
@@ -430,10 +488,14 @@ const KYCFabric = () => {
             <h2 className={`text-3xl font-display font-bold text-brand-navy mb-6 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
               Built by <span className="text-brand-gold">Crawfield & Dutton</span>
             </h2>
-            <p className={`text-lg text-gray-600 leading-relaxed ${isVisible ? 'animate-fade-in-up' : 'opacity-0'} animation-delay-200`}>
+            <p className={`text-lg text-gray-600 leading-relaxed mb-4 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'} animation-delay-200`}>
               KYCFabric is powered by the same R&D team behind BankLens and uses real-time behavioral models 
               tuned to Indian consumers. Our AI models understand local financial patterns, employment structures, 
               and spending behaviors unique to the Indian market.
+            </p>
+            <p className={`text-lg text-gray-600 leading-relaxed ${isVisible ? 'animate-fade-in-up' : 'opacity-0'} animation-delay-300`}>
+              With multiple backend data sources integrated, KYCFabric ensures high uptime, redundancy, and reliable 
+              verification services even during peak loads or provider outages.
             </p>
           </div>
         </div>
