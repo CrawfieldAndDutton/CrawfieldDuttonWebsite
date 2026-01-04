@@ -208,7 +208,7 @@ const KYCFabric = () => {
             </p>
             <div className={`flex flex-col sm:flex-row gap-4 justify-center ${isVisible ? 'animate-fade-in-up' : 'opacity-0'} animation-delay-600`}>
               <button
-                onClick={scrollToForm}
+                onClick={() => window.open('https://kyc-fabric.crawfieldanddutton.com/', '_blank')}
                 className="inline-flex items-center px-8 py-4 bg-brand-gold text-white rounded-lg font-medium hover:bg-brand-darkGold transition-all duration-300 shadow-gold text-lg"
               >
                 Get Early Access <ArrowRight size={20} className="ml-2" />
