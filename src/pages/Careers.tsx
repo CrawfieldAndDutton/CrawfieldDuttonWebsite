@@ -3,6 +3,17 @@ import { useState, useEffect, useRef } from 'react';
 import { Briefcase, Code, Database, PieChart, BarChart2, Users, ArrowRight, ChevronDown, ChevronUp } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from '../components/ui/dialog';
+import { Input } from '../components/ui/input';
+import { Label } from '../components/ui/label';
+import { Textarea } from '../components/ui/textarea';
+import { Button } from '../components/ui/button';
 
 type JobPosition = {
   id: string;
@@ -21,6 +32,15 @@ const Careers = () => {
   const pageRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [filter, setFilter] = useState<string>('all');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedJob, setSelectedJob] = useState<JobPosition | null>(null);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    coverLetter: '',
+    cv: null as File | null
+  });
   const [jobs, setJobs] = useState<JobPosition[]>([
     {
       id: 'ds1',
@@ -145,6 +165,58 @@ const Careers = () => {
         "Familiarity with fintech and alternative credit scoring is a plus"
       ],
       isExpanded: false
+    },
+    {
+      id: 'bdm1',
+      title: 'Business Development Manager',
+      department: 'Sales',
+      location: 'Kolkata',
+      type: 'Full-time',
+      icon: <Briefcase size={24} className="text-brand-gold" />,
+      description: "Drive business growth by identifying new opportunities, building strategic partnerships, and expanding our client base in the financial services sector.",
+      responsibilities: [
+        "Identify and pursue new business opportunities in banking, NBFC, and fintech sectors",
+        "Build and maintain strong relationships with potential clients and partners",
+        "Develop and execute sales strategies to achieve revenue targets",
+        "Conduct product demonstrations and presentations to key stakeholders",
+        "Collaborate with product and technical teams to understand client needs",
+        "Negotiate contracts and close deals with enterprise clients"
+      ],
+      requirements: [
+        "Bachelor's degree in Business, Marketing, or related field",
+        "5+ years of experience in B2B sales, preferably in fintech or financial services",
+        "Proven track record of meeting or exceeding sales targets",
+        "Strong communication, negotiation, and presentation skills",
+        "Understanding of financial products and services",
+        "Ability to work independently and as part of a team"
+      ],
+      isExpanded: false
+    },
+    {
+      id: 'pe1',
+      title: 'Product Evangelist',
+      department: 'Sales',
+      location: 'Kolkata',
+      type: 'Full-time',
+      icon: <Briefcase size={24} className="text-brand-gold" />,
+      description: "Be the voice of our products, educating the market about our AI-powered financial intelligence solutions and driving adoption through thought leadership and strategic engagement.",
+      responsibilities: [
+        "Develop and execute product evangelism strategies to increase market awareness",
+        "Create compelling content including blog posts, case studies, and presentations",
+        "Represent the company at industry events, conferences, and webinars",
+        "Build relationships with key influencers and thought leaders in the fintech space",
+        "Work closely with sales and marketing teams to support lead generation",
+        "Gather market feedback and insights to inform product development"
+      ],
+      requirements: [
+        "Bachelor's degree in Business, Marketing, Communications, or related field",
+        "3+ years of experience in product marketing, evangelism, or sales enablement",
+        "Excellent public speaking and presentation skills",
+        "Strong writing and content creation abilities",
+        "Deep understanding of fintech and financial services industry",
+        "Passion for technology and ability to explain complex concepts simply"
+      ],
+      isExpanded: false
     }
   ]);
 
@@ -179,6 +251,68 @@ const Careers = () => {
     );
   };
 
+  const handleApplyNow = (job: JobPosition) => {
+    setSelectedJob(job);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedJob(null);
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      coverLetter: '',
+      cv: null
+    });
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setFormData(prev => ({ ...prev, cv: e.target.files![0] }));
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!selectedJob) return;
+
+    const formDataToSubmit = new FormData();
+    formDataToSubmit.append('name', formData.name);
+    formDataToSubmit.append('email', formData.email);
+    formDataToSubmit.append('phone', formData.phone);
+    formDataToSubmit.append('position', selectedJob.title);
+    formDataToSubmit.append('department', selectedJob.department);
+    formDataToSubmit.append('coverLetter', formData.coverLetter);
+    if (formData.cv) {
+      formDataToSubmit.append('cv', formData.cv);
+    }
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/careers@crawfieldanddutton.com', {
+        method: 'POST',
+        body: formDataToSubmit,
+      });
+
+      if (response.ok) {
+        alert('Application submitted successfully! We will get back to you soon.');
+        handleCloseModal();
+      } else {
+        alert('There was an error submitting your application. Please try again.');
+      }
+    } catch (error) {
+      alert('There was an error submitting your application. Please try again.');
+      console.error('Form submission error:', error);
+    }
+  };
+
   const filteredJobs = filter === 'all' 
     ? jobs 
     : jobs.filter(job => job.department.toLowerCase().includes(filter.toLowerCase()));
@@ -188,7 +322,8 @@ const Careers = () => {
     { id: 'ai', name: 'AI & Analytics' },
     { id: 'engineering', name: 'Engineering' },
     { id: 'operations', name: 'Operations' },
-    { id: 'risk', name: 'Risk & Compliance' }
+    { id: 'risk', name: 'Risk & Compliance' },
+    { id: 'sales', name: 'Sales' }
   ];
 
   return (
@@ -322,7 +457,10 @@ const Careers = () => {
                     
                     {/* Job Details (Expandable) */}
                     {job.isExpanded && (
-                      <div className="px-5 pb-5 border-t border-gray-100 pt-4 animate-fade-in">
+                      <div 
+                        className="px-5 pb-5 border-t border-gray-100 pt-4 animate-fade-in"
+                        onClick={(e) => e.stopPropagation()}
+                      >
                         <p className="text-gray-700 mb-4">{job.description}</p>
                         
                         <div className="mb-4">
@@ -343,7 +481,13 @@ const Careers = () => {
                           </ul>
                         </div>
                         
-                        <button className="px-4 py-2 bg-brand-gold text-white rounded-md hover:bg-brand-darkGold transition-all inline-flex items-center">
+                        <button 
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleApplyNow(job);
+                          }}
+                          className="px-4 py-2 bg-brand-gold text-white rounded-md hover:bg-brand-darkGold transition-all inline-flex items-center"
+                        >
                           Apply Now <ArrowRight size={16} className="ml-2" />
                         </button>
                       </div>
@@ -403,7 +547,7 @@ const Careers = () => {
               Don't see a position that matches your skills?
             </p>
             <a 
-              href="mailto:careers@crawfieldanddutton.com" 
+              href="mailto:support@crawfieldanddutton.com" 
               className="inline-flex items-center px-6 py-3 bg-brand-navy text-white rounded-lg hover:bg-brand-lightNavy transition-all duration-300"
             >
               Send us your resume <ArrowRight size={16} className="ml-2" />
@@ -411,6 +555,109 @@ const Careers = () => {
           </div>
         </div>
       </div>
+
+      {/* Application Modal */}
+      <Dialog open={isModalOpen} onOpenChange={(open) => {
+        if (!open) handleCloseModal();
+      }}>
+        <DialogContent className="sm:max-w-[500px]">
+          <DialogHeader>
+            <DialogTitle>Apply for {selectedJob?.title}</DialogTitle>
+            <DialogDescription>
+              Please fill out the form below to submit your application. We'll review it and get back to you soon.
+            </DialogDescription>
+          </DialogHeader>
+          
+          <form onSubmit={handleSubmit} className="space-y-4 mt-4">
+            <div className="space-y-2">
+              <Label htmlFor="name">Full Name *</Label>
+              <Input
+                id="name"
+                name="name"
+                type="text"
+                required
+                value={formData.name}
+                onChange={handleInputChange}
+                placeholder="John Doe"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="email">Email Address *</Label>
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                required
+                value={formData.email}
+                onChange={handleInputChange}
+                placeholder="john.doe@example.com"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="phone">Phone Number *</Label>
+              <Input
+                id="phone"
+                name="phone"
+                type="tel"
+                required
+                value={formData.phone}
+                onChange={handleInputChange}
+                placeholder="+91 9876543210"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="cv">Upload CV/Resume *</Label>
+              <div className="flex items-center gap-2">
+                <Input
+                  id="cv"
+                  name="cv"
+                  type="file"
+                  accept=".pdf,.doc,.docx"
+                  required
+                  onChange={handleFileChange}
+                  className="cursor-pointer"
+                />
+                {formData.cv && (
+                  <span className="text-sm text-gray-600">{formData.cv.name}</span>
+                )}
+              </div>
+              <p className="text-xs text-gray-500">Accepted formats: PDF, DOC, DOCX (Max 5MB)</p>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="coverLetter">Cover Letter (Optional)</Label>
+              <Textarea
+                id="coverLetter"
+                name="coverLetter"
+                value={formData.coverLetter}
+                onChange={handleInputChange}
+                placeholder="Tell us why you're interested in this position..."
+                rows={4}
+              />
+            </div>
+
+            <div className="flex gap-3 pt-4">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={handleCloseModal}
+                className="flex-1"
+              >
+                Cancel
+              </Button>
+              <Button
+                type="submit"
+                className="flex-1 bg-brand-gold hover:bg-brand-darkGold text-white"
+              >
+                Submit Application
+              </Button>
+            </div>
+          </form>
+        </DialogContent>
+      </Dialog>
       
       <Footer />
     </div>
