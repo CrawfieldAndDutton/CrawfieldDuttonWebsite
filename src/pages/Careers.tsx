@@ -296,7 +296,7 @@ const Careers = () => {
     }
 
     try {
-      const response = await fetch('https://formsubmit.co/careers@crawfieldanddutton.com', {
+      const response = await fetch('https://formsubmit.co/support@crawfieldanddutton.com', {
         method: 'POST',
         body: formDataToSubmit,
       });
