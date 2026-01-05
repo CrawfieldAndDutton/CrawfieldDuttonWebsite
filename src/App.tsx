@@ -18,6 +18,8 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Blogs from "./pages/Blogs";
 import BankLens from "./pages/BankLens";
+import IndividualLoanMonitoring from "./pages/IndividualLoanMonitoring";
+import BusinessLoanMonitoring from "./pages/BusinessLoanMonitoring";
 import KYCFabric from "./pages/KYCFabric";
 import Services from "./pages/Services";
 import Portfolio from "./pages/Portfolio";
@@ -46,10 +48,12 @@ const App = () => (
           <Route path="/gdpr" element={<GDPR />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/banklens" element={<BankLens />} />
+          <Route path="/banklens/individual-loan-monitoring" element={<IndividualLoanMonitoring />} />
+          <Route path="/banklens/business-loan-monitoring" element={<BusinessLoanMonitoring />} />
           <Route path="/kycfabric" element={<KYCFabric />} />
           <Route path="/services" element={<Services />} />
           <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/industries" element={<Industries />} />
+          <Route path="/verticals" element={<Industries />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/thank-you" element={<ThankYou />} />

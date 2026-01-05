@@ -431,23 +431,6 @@ const KYCFabric = () => {
         </div>
       </section>
 
-      {/* Why It Matters */}
-      <section className="py-20 bg-brand-navy text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className={`text-4xl font-display font-bold mb-6 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
-              Why It <span className="text-brand-gold">Matters</span>
-            </h2>
-            <p className={`text-xl text-gray-300 mb-4 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'} animation-delay-200`}>
-              42% of default risk lies in users who clear KYC but hide financial stress.
-            </p>
-            <p className={`text-lg text-gray-400 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'} animation-delay-300`}>
-              KYCFabric gives you the signals to prevent fraud, drop-offs, and write-offs before they start.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Integration Options */}
       <section ref={integrationRef} className="py-20 bg-white">
         <div className="container mx-auto px-4">

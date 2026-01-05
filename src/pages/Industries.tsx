@@ -233,7 +233,7 @@ const Industries = () => {
           <div className="max-w-4xl mx-auto text-center">
             <div className={`inline-flex items-center space-x-2 bg-brand-cream px-4 py-2 rounded-full border border-brand-gold/30 mb-6 ${heroVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
               <Target size={16} className="text-brand-gold" />
-              <span className="text-sm font-medium text-brand-navy">Industries We Serve</span>
+              <span className="text-sm font-medium text-brand-navy">Verticals We Serve</span>
             </div>
             
             <h1 className={`text-5xl md:text-6xl font-display font-bold mb-6 text-brand-navy ${heroVisible ? 'animate-fade-in-up' : 'opacity-0'} animation-delay-200`}>
@@ -242,7 +242,7 @@ const Industries = () => {
             </h1>
             
             <p className={`text-xl md:text-2xl text-brand-navy/80 mb-12 max-w-3xl mx-auto ${heroVisible ? 'animate-fade-in-up' : 'opacity-0'} animation-delay-300`}>
-              We deliver custom BFSI solutions across diverse industries. From NBFCs to wealth management, we understand your unique challenges and build solutions that scale.
+              We deliver custom BFSI solutions across diverse verticals. From NBFCs to wealth management, we understand your unique challenges and build solutions that scale.
             </p>
             
             <div className={`flex flex-col sm:flex-row gap-4 justify-center ${heroVisible ? 'animate-fade-in-up' : 'opacity-0'} animation-delay-400`}>
@@ -264,15 +264,15 @@ const Industries = () => {
         </div>
       </section>
 
-      {/* Industries Grid */}
+      {/* Verticals Grid */}
       <section className="py-20 bg-white" ref={pageRef}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-display font-bold text-brand-navy mb-4">
-              Industries We Serve
+              Verticals We Serve
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Comprehensive solutions tailored to your industry's unique needs
+              Comprehensive solutions tailored to your vertical's unique needs
             </p>
           </div>
 
@@ -363,13 +363,13 @@ const Industries = () => {
             ) : (
               <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 md:p-12">
                 <form
-                  action="https://formsubmit.co/info@crawfieldanddutton.com"
+                  action="https://formsubmit.co/business@crawfieldanddutton.com"
                   method="POST"
                   className="space-y-6"
                 >
                   <input type="hidden" name="_captcha" value="false" />
-                  <input type="hidden" name="_next" value={`${window.location.origin}/#/industries?success=true`} />
-                  <input type="hidden" name="_subject" value="Industries Inquiry - Custom BFSI Project" />
+                  <input type="hidden" name="_next" value={`${window.location.origin}/#/verticals?success=true`} />
+                  <input type="hidden" name="_subject" value="Verticals Inquiry - Custom BFSI Project" />
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
