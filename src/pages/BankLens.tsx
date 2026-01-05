@@ -265,6 +265,86 @@ const BankLens = () => {
         </div>
       </section>
 
+      {/* Loan Monitoring Solutions */}
+      <section className="py-20 bg-gradient-to-b from-white via-brand-cream/30 to-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className={`text-4xl md:text-5xl font-display font-bold text-brand-navy mb-4 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
+                Explore Our <span className="text-brand-gold">Monitoring Engines</span>
+              </h2>
+              <p className={`text-lg text-gray-600 max-w-2xl mx-auto ${isVisible ? 'animate-fade-in-up' : 'opacity-0'} animation-delay-200`}>
+                Comprehensive loan monitoring tailored to your specific needs
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Individual Loan Monitoring */}
+              <Link
+                to="/banklens/individual-loan-monitoring"
+                className={`group relative bg-white rounded-2xl shadow-xl border-2 border-gray-100 hover:border-brand-gold overflow-hidden transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-2 ${
+                  isVisible ? 'animate-fade-in-up' : 'opacity-0'
+                }`}
+                style={{ animationDelay: '400ms' }}
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-brand-gold/5 rounded-bl-full transform translate-x-16 -translate-y-16 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-500"></div>
+                <div className="relative z-10 p-8">
+                  <div className="w-16 h-16 bg-gradient-to-br from-brand-gold to-brand-darkGold rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                    <Users size={32} className="text-white" />
+                  </div>
+                  <h3 className="text-2xl font-display font-bold text-brand-navy mb-3 group-hover:text-brand-gold transition-colors">
+                    Individual Loan Monitoring Engine
+                  </h3>
+                  <p className="text-gray-600 mb-6 leading-relaxed">
+                    Monitor personal loans, consumer credit, and individual borrower portfolios with AI-powered risk assessment and early warning signals.
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    <span className="px-3 py-1 bg-brand-cream text-brand-gold text-xs font-medium rounded-full">Risk Scorecard</span>
+                    <span className="px-3 py-1 bg-brand-cream text-brand-gold text-xs font-medium rounded-full">Stress Dimensions</span>
+                    <span className="px-3 py-1 bg-brand-cream text-brand-gold text-xs font-medium rounded-full">Behavioral Patterns</span>
+                  </div>
+                  <div className="flex items-center text-brand-gold font-medium group-hover:gap-2 transition-all">
+                    <span>Explore Solution</span>
+                    <ArrowRight size={20} className="ml-2 group-hover:translate-x-2 transition-transform" />
+                  </div>
+                </div>
+              </Link>
+
+              {/* Business Loan Monitoring */}
+              <Link
+                to="/banklens/business-loan-monitoring"
+                className={`group relative bg-white rounded-2xl shadow-xl border-2 border-gray-100 hover:border-brand-gold overflow-hidden transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-2 ${
+                  isVisible ? 'animate-fade-in-up' : 'opacity-0'
+                }`}
+                style={{ animationDelay: '500ms' }}
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-brand-gold/5 rounded-bl-full transform translate-x-16 -translate-y-16 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-500"></div>
+                <div className="relative z-10 p-8">
+                  <div className="w-16 h-16 bg-gradient-to-br from-brand-gold to-brand-darkGold rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                    <Building size={32} className="text-white" />
+                  </div>
+                  <h3 className="text-2xl font-display font-bold text-brand-navy mb-3 group-hover:text-brand-gold transition-colors">
+                    Business Loan Monitoring Engine
+                  </h3>
+                  <p className="text-gray-600 mb-6 leading-relaxed">
+                    Track business loans, MSME portfolios, and commercial credit with GST data analysis, revenue tracking, and cash flow monitoring.
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    <span className="px-3 py-1 bg-brand-cream text-brand-gold text-xs font-medium rounded-full">GST Analysis</span>
+                    <span className="px-3 py-1 bg-brand-cream text-brand-gold text-xs font-medium rounded-full">Cash Flow Tracking</span>
+                    <span className="px-3 py-1 bg-brand-cream text-brand-gold text-xs font-medium rounded-full">Business Health</span>
+                  </div>
+                  <div className="flex items-center text-brand-gold font-medium group-hover:gap-2 transition-all">
+                    <span>Explore Solution</span>
+                    <ArrowRight size={20} className="ml-2 group-hover:translate-x-2 transition-transform" />
+                  </div>
+                </div>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* What Makes It Different? */}
       <section className="py-20 bg-brand-cream/30">
         <div className="container mx-auto px-4">
@@ -357,10 +437,10 @@ const BankLens = () => {
                 <div className="absolute top-0 right-0 w-20 h-20 bg-brand-gold/10 rounded-bl-full transform translate-x-10 -translate-y-10 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300"></div>
                 <div className="relative z-10">
                   <div className="w-14 h-14 bg-brand-gold/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand-gold group-hover:scale-110 transition-all duration-300">
-                    <TrendingDown size={28} className="text-brand-gold group-hover:text-white transition-colors" />
+                    <Database size={28} className="text-brand-gold group-hover:text-white transition-colors" />
                   </div>
-                  <h3 className="text-lg font-display font-bold text-brand-navy mb-2 group-hover:text-brand-gold transition-colors">Monitoring Graphs</h3>
-                  <p className="text-sm text-gray-600">Trend analysis and predictions</p>
+                  <h3 className="text-lg font-display font-bold text-brand-navy mb-2 group-hover:text-brand-gold transition-colors">On-Prem Solution</h3>
+                  <p className="text-sm text-gray-600">Deploy on your infrastructure with full control</p>
                 </div>
               </div>
               <div className="group relative bg-white rounded-xl p-6 shadow-lg border-2 border-gray-100 hover:border-brand-gold hover:shadow-2xl transition-all duration-300 overflow-hidden">
