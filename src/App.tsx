@@ -49,7 +49,7 @@ const App = () => (
           <Route path="/kycfabric" element={<KYCFabric />} />
           <Route path="/services" element={<Services />} />
           <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/industries" element={<Industries />} />
+          <Route path="/verticals" element={<Industries />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/thank-you" element={<ThankYou />} />

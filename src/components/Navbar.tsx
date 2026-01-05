@@ -1,11 +1,40 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, ChevronDown, TrendingUp, Sparkles } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "../components/ui/dialog";
+import { Input } from "../components/ui/input";
+import { Label } from "../components/ui/label";
+import { Textarea } from "../components/ui/textarea";
+import { Button } from "../components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../components/ui/select";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
+  const [isAccessModalOpen, setIsAccessModalOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    organization: '',
+    optingFor: '',
+    customSolution: '',
+    mode: ''
+  });
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -97,10 +126,10 @@ const Navbar = () => {
             </Link>
             
             <Link 
-              to="/industries" 
+              to="/verticals" 
               className="text-brand-navy hover:text-brand-gold font-medium transition-colors duration-300"
             >
-              Industries
+              Verticals
             </Link>
             
             <Link 
@@ -117,21 +146,12 @@ const Navbar = () => {
               Contact
             </Link>
 
-            <a
-              href="https://banklens.crawfieldanddutton.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 rounded-md text-brand-navy border border-brand-gold hover:bg-brand-gold hover:text-white transition-all duration-300"
-            >
-              Login
-            </a>
-
-            <Link
-              to="/signup"
+            <button
+              onClick={() => setIsAccessModalOpen(true)}
               className="px-4 py-2 rounded-md bg-brand-gold text-white hover:bg-brand-darkGold shadow-gold transition-all duration-300"
             >
-              Sign Up
-            </Link>
+              Ask for Access
+            </button>
           </div>
 
           {/* Mobile Navigation Toggle */}
@@ -195,28 +215,214 @@ const Navbar = () => {
               Contact
             </Link>
 
-            <div className="flex space-x-3 pt-3">
-              <a
-                href="https://banklens.crawfieldanddutton.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 px-4 py-2 rounded-md text-center text-brand-navy border border-brand-gold hover:bg-brand-gold hover:text-white transition-all duration-300"
-                onClick={() => setIsOpen(false)}
-              >
-                Login
-              </a>
-
-              <Link
-                to="/signup"
-                className="flex-1 px-4 py-2 rounded-md text-center bg-brand-gold text-white hover:bg-brand-darkGold shadow-gold transition-all duration-300"
-                onClick={() => setIsOpen(false)}
-              >
-                Sign Up
-              </Link>
-            </div>
+            <button
+              onClick={() => {
+                setIsAccessModalOpen(true);
+                setIsOpen(false);
+              }}
+              className="mt-3 w-full px-4 py-2 rounded-md bg-brand-gold text-white hover:bg-brand-darkGold shadow-gold transition-all duration-300"
+            >
+              Ask for Access
+            </button>
           </div>
         </div>
       )}
+
+      {/* Ask for Access Modal */}
+      <Dialog open={isAccessModalOpen} onOpenChange={setIsAccessModalOpen}>
+        <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle>Ask for Access</DialogTitle>
+            <DialogDescription>
+              Fill out the form below to request access to our products and solutions.
+            </DialogDescription>
+          </DialogHeader>
+
+          {formSubmitted ? (
+            <div className="bg-green-50 border border-green-200 rounded-xl p-8 text-green-800 text-center">
+              <p className="font-medium text-lg mb-2">Thank you for your interest!</p>
+              <p className="text-sm">We'll get back to you shortly with access details.</p>
+            </div>
+          ) : (
+            <form
+              onSubmit={async (e) => {
+                e.preventDefault();
+                const formDataToSubmit = new FormData();
+                formDataToSubmit.append('name', formData.name);
+                formDataToSubmit.append('email', formData.email);
+                formDataToSubmit.append('phone', formData.phone);
+                formDataToSubmit.append('organization', formData.organization);
+                formDataToSubmit.append('optingFor', formData.optingFor);
+                if (formData.optingFor === 'Custom Solution') {
+                  formDataToSubmit.append('customSolution', formData.customSolution);
+                }
+                formDataToSubmit.append('mode', formData.mode);
+                formDataToSubmit.append('_subject', 'Access Request - Crawfield & Dutton');
+
+                try {
+                  const response = await fetch('https://formsubmit.co/business@crawfieldanddutton.com', {
+                    method: 'POST',
+                    body: formDataToSubmit,
+                  });
+
+                  if (response.ok) {
+                    setFormSubmitted(true);
+                    setTimeout(() => {
+                      setIsAccessModalOpen(false);
+                      setFormSubmitted(false);
+                      setFormData({
+                        name: '',
+                        email: '',
+                        phone: '',
+                        organization: '',
+                        optingFor: '',
+                        customSolution: '',
+                        mode: ''
+                      });
+                    }, 3000);
+                  } else {
+                    alert('There was an error submitting your request. Please try again.');
+                  }
+                } catch (error) {
+                  alert('There was an error submitting your request. Please try again.');
+                  console.error('Form submission error:', error);
+                }
+              }}
+              className="space-y-4 mt-4"
+            >
+              <div className="space-y-2">
+                <Label htmlFor="name">Name *</Label>
+                <Input
+                  id="name"
+                  name="name"
+                  type="text"
+                  required
+                  value={formData.name}
+                  onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                  placeholder="John Doe"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="email">Email Address *</Label>
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                  placeholder="john.doe@example.com"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="phone">Phone Number *</Label>
+                <Input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  required
+                  value={formData.phone}
+                  onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
+                  placeholder="+91 9876543210"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="organization">Organization *</Label>
+                <Input
+                  id="organization"
+                  name="organization"
+                  type="text"
+                  required
+                  value={formData.organization}
+                  onChange={(e) => setFormData(prev => ({ ...prev, organization: e.target.value }))}
+                  placeholder="Your Company Name"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="optingFor">Opting For *</Label>
+                <Select
+                  value={formData.optingFor}
+                  onValueChange={(value) => setFormData(prev => ({ ...prev, optingFor: value }))}
+                  required
+                >
+                  <SelectTrigger id="optingFor">
+                    <SelectValue placeholder="Select a product" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="BankLens">BankLens</SelectItem>
+                    <SelectItem value="KYCFabric">KYCFabric</SelectItem>
+                    <SelectItem value="Custom Solution">Custom Solution</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {formData.optingFor === 'Custom Solution' && (
+                <div className="space-y-2">
+                  <Label htmlFor="customSolution">Solution Description *</Label>
+                  <Textarea
+                    id="customSolution"
+                    name="customSolution"
+                    required
+                    value={formData.customSolution}
+                    onChange={(e) => setFormData(prev => ({ ...prev, customSolution: e.target.value }))}
+                    placeholder="Please describe your custom solution requirements..."
+                    rows={4}
+                  />
+                </div>
+              )}
+
+              <div className="space-y-2">
+                <Label htmlFor="mode">Setup Mode *</Label>
+                <Select
+                  value={formData.mode}
+                  onValueChange={(value) => setFormData(prev => ({ ...prev, mode: value }))}
+                  required
+                >
+                  <SelectTrigger id="mode">
+                    <SelectValue placeholder="Select deployment mode" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="On-Prem">On-Prem</SelectItem>
+                    <SelectItem value="SaaS">SaaS</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="flex gap-3 pt-4">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => {
+                    setIsAccessModalOpen(false);
+                    setFormData({
+                      name: '',
+                      email: '',
+                      phone: '',
+                      organization: '',
+                      optingFor: '',
+                      customSolution: '',
+                      mode: ''
+                    });
+                  }}
+                  className="flex-1"
+                >
+                  Cancel
+                </Button>
+                <Button
+                  type="submit"
+                  className="flex-1 bg-brand-gold hover:bg-brand-darkGold text-white"
+                >
+                  Submit Request
+                </Button>
+              </div>
+            </form>
+          )}
+        </DialogContent>
+      </Dialog>
     </nav>
   );
 };

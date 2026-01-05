@@ -91,11 +91,6 @@ const Footer = () => {
               {/* <FooterLink href="#help">Help Center</FooterLink> */}
               {/* <FooterLink href="#faq">FAQ</FooterLink> */}
               <li>
-                <Link to="/privacy-policy" className="text-gray-300 hover:text-brand-gold transition-colors">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
                 <Link to="/terms-of-service" className="text-gray-300 hover:text-brand-gold transition-colors">
                   Terms of Service
                 </Link>
@@ -106,8 +101,13 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/industries" className="text-gray-300 hover:text-brand-gold transition-colors">
-                  Industries
+                <Link to="/verticals" className="text-gray-300 hover:text-brand-gold transition-colors">
+                  Verticals
+                </Link>
+              </li>
+              <li>
+                <Link to="/partnership" className="text-gray-300 hover:text-brand-gold transition-colors">
+                  Partner with Us
                 </Link>
               </li>
               <li className="pt-2">

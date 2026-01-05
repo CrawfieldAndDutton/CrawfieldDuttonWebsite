@@ -374,21 +374,21 @@ const Services = () => {
       </section>
 
 
-      {/* Industries CTA */}
+      {/* Verticals CTA */}
       <section className="py-20 bg-brand-cream/30">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl font-display font-bold text-brand-navy mb-4">
-              Industries We Serve
+              Verticals We Serve
             </h2>
             <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-              Trusted by leading financial institutions and fintech companies across diverse industries
+              Trusted by leading financial institutions and fintech companies across diverse verticals
             </p>
             <Link
-              to="/industries"
+              to="/verticals"
               className="inline-flex items-center px-8 py-4 bg-brand-gold text-white rounded-lg font-medium hover:bg-brand-darkGold transition-all duration-300 shadow-gold text-lg group"
             >
-              <span>Explore Industries</span>
+              <span>Explore Verticals</span>
               <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
           </div>
@@ -417,7 +417,7 @@ const Services = () => {
             ) : (
               <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 md:p-12">
                 <form
-                  action="https://formsubmit.co/info@crawfieldanddutton.com"
+                  action="https://formsubmit.co/business@crawfieldanddutton.com"
                   method="POST"
                   className="space-y-6"
                 >
