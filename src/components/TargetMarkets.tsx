@@ -117,8 +117,8 @@ const TargetMarkets = () => {
           </div>
           
           <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-            <p className="text-4xl font-display font-bold text-brand-gold mb-2">5M+</p>
-            <p className="text-gray-600">Statements Analyzed</p>
+            <p className="text-4xl font-display font-bold text-brand-gold mb-2">50K+</p>
+            <p className="text-gray-600">Customers Monitored</p>
           </div>
           
           <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
